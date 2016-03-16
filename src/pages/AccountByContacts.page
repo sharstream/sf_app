@@ -1,0 +1,43 @@
+<apex:page controller="AccountByContacts" sidebar="false">
+    
+    <apex:sectionHeader title="Account with Contacts" />
+    <apex:form >
+        <apex:pageBlock title="AccountByContacts">
+        
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!accountcontact}" value="Save" id="theButton"/>
+            </apex:pageBlockButtons>
+    
+                <apex:pageMessages />
+                <apex:pageMessage summary="This page was created using ONLY one query" severity="info" strength="3"/>
+        
+        <!--<apex:pageBlockSection >-->
+        
+            <br></br>
+                    <table width="100%">
+                    
+                        <apex:repeat value="{!accounts}" var="accWrap">   
+                        <apex:repeat value="{!accWrap.accounts}" var="acc">  
+                        
+                        <apex:outputText style="background-color:#64b49d; color:white; padding:5px" value="{!acc.Name}"/><br> </br>     
+                        
+                        <apex:pageBlockTable value="{!acc.contacts}" var="cont">
+                                <tr> <td><apex:column headerValue="First Name" value="{!cont.FirstName}"/></td></tr>
+                                <tr> <td><apex:column headerValue="Last Name" value="{!cont.LastName}"/></td></tr>
+                                <tr> <td><apex:column headerValue="Phone" value="{!cont.Phone}"/></td></tr>
+                                <tr> <td><apex:column headerValue="Email" value="{!cont.Email}"/></td></tr>
+                        
+                        </apex:pageBlockTable>
+                    
+                    <br> </br>
+                      
+                        </apex:repeat> 
+                        </apex:repeat>
+                        
+                    </table>
+    
+       <!--</apex:pageBlockSection>-->
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
