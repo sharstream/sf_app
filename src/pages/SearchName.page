@@ -1,0 +1,25 @@
+<apex:page sidebar="false" doctype="html-5.0" standardController="Account" extensions="SearchAccount">
+    <apex:sectionHeader title="Task 2"/>
+    <fieldset>
+        <legend>Search by Account Name</legend>
+    </fieldset>
+    <apex:form >
+        <apex:pageBlock id="in" title="My Search">       
+            <apex:pageBlockSection >
+                <apex:inputText value="{!searchString}"/>
+                <apex:pageMessages />  
+                <apex:commandButton value="Search records" action="{!findAccount}" rerender="out, in" status="status"/>        
+            </apex:pageBlockSection>
+        </apex:pageBlock> 
+    </apex:form>
+    <apex:pageBlock id="out" title="My Search Result">
+        <apex:actionStatus startText="searching..." id="status"/> 
+        <apex:pageBlockTable value="{!acc}" var="a">
+            <!-- apex:column value="{!a.id}"/-->
+            <apex:column value="{!a.Name}"/>    
+            <apex:column value="{!a.BillingState}"/>    
+            <apex:column value="{!a.Phone}"/>   
+            <apex:column value="{!a.Website}"/>     
+        </apex:pageBlockTable>      
+    </apex:pageBlock> 
+</apex:page>
