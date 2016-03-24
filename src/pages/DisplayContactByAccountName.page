@@ -1,0 +1,16 @@
+<apex:page sidebar="false" doctype="html-5.0" controller="DisplayAccountList">
+	<apex:sectionHeader title="Task 1"/>
+	<fieldset>
+        <legend>My Account List</legend>
+        <h1>List by Name, Billing State, Phone and Website</h1>
+    </fieldset>
+	<apex:pageBlock title="My Contents">
+		<apex:pageMessages />
+		<apex:pageBlockTable var="acc" value="{!Accounts}">
+			<apex:column value="{!acc.Name}"/>	 
+			<apex:column value="{!acc.BillingState}"/>	
+			<apex:column value="{!acc.Phone}"/>	
+			<apex:column value="{!acc.Website}"/>	  		
+		</apex:pageBlockTable>
+	</apex:pageBlock> 
+</apex:page>
