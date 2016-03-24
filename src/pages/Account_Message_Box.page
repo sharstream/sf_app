@@ -1,0 +1,41 @@
+<apex:page sidebar="false" controller="DisplayAccountList">
+    <apex:sectionHeader title="Task 5"/>    
+    <apex:form id="form">
+        <apex:pageBlock title="My Contents">
+            <apex:pageMessages id="showAccount"/>
+            <apex:pageBlockTable value="{!Accounts}" var="acc" onRowClick="show(this);">
+            <apex:column headerValue="Name">  
+                <apex:commandLink reRender="showAccount" action="{!displayMsg}">
+                    {!acc.Name}<apex:param name="nickName" value="{!acc.Name}" assignTo="{!id1}"/>
+                </apex:commandLink>
+            </apex:column>
+                            
+                <apex:column headerValue="Billing State" value="{!acc.BillingState}" /> 
+                <apex:column headerValue="Phone" value="{!acc.Phone}" />    
+                <apex:column headerValue="Website" value="{!acc.Website}" />            
+            </apex:pageBlockTable>
+        </apex:pageBlock> 
+    </apex:form>
+    <!--script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
+    <style>       
+        .selectedDataRow{      
+            background-color: #ccffbb;         
+        }      
+    </style>   
+    <script>    
+     var previousrrow='';     
+     function show(rowVar){                 
+        var classname1=rowVar.className;
+        rowVar.className="selectedDataRow";
+        if(previousrrow==''){ 
+            previousrrow=rowVar;
+        }
+         else{  
+             if(previousrrow.innerHTML!=rowVar.innerHTML){      
+                 previousrrow.className=classname1; 
+                 previousrrow=rowVar;       
+             }
+         }
+     };   
+    </script>
+</apex:page>
