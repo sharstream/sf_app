@@ -1,29 +1,42 @@
-/**
- * This class contains unit tests for validating the behavior of Apex classes
- * and triggers.
- *
- * Unit tests are class methods that verify whether a particular piece
- * of code is working properly. Unit test methods take no arguments,
- * commit no data to the database, and are flagged with the testMethod
- * keyword in the method definition.
- *
- * All test methods in an organization are executed whenever Apex code is deployed
- * to a production organization to confirm correctness, ensure code
- * coverage, and prevent regressions. All Apex classes are
- * required to have at least 75% code coverage in order to be deployed
- * to a production organization. In addition, all triggers must have some code coverage.
- * 
- * The @isTest class annotation indicates this class only contains test
- * methods. Classes defined with the @isTest annotation do not count against
- * the organization size limit for all Apex scripts.
- *
- * See the Apex Language Reference for more information about Testing and Code Coverage.
- */
+/***********************************************
+* Copyright (c) 2016, ABB Enterprise Software Inc.
+* All rights reserved.
+* Author        :   David Perez(kitsunebrave)
+* Related Task  :   Ticket-00382254
+* Purpose       :   PopUp Extension Apex Class
+************************************************/
 @isTest
 private class PopUpExtensionTest {
-
-    static testMethod void myUnitTest() {
-        // TO DO: implement unit test
-        
-    }
+	
+    @isTest static void TestMain(){
+    	// TO DO: implement unit test
+		
+		PopUpExtension controller = new PopUpExtension();
+		System.assert(controller != null);
+    	
+    	List<Opportunity> supports = (Opportunity)controller.lstWrapperOpp();
+    	System.assert(supports != null);
+    	
+    	for(Opportunity o : supports){
+	    	try{	 
+	    		System.assert(o.Account__c.Id != null);
+	    		System.assert(o.Opportunity__c.Id != null);
+	    		
+	    		System.assertEquals(o.Account_Name__c,'Ameren Services Company');   		
+	    	 	System.assertEquals(o.Opportunity__c,'ICE - Parts and Cables (E-7656)');
+    	 		System.assert(true, popupExtension.IsNotRepeat());
+	    	}
+	    	catch (exception e){
+	    		System.assert(false, popupExtension.IsNotRepeat(), ApexPages.Severity.ERROR,'Error Occured while showing a list of opportunities '+e.getMessage());
+	    	} 	
+    	}
+	}
+	
+	@isTest static void TextNullPointException(){
+		
+	}
+	
+	@isTest static void OutOfRange(){
+		
+	}
 }

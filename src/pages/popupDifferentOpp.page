@@ -1,0 +1,67 @@
+<apex:page showHeader="false" sidebar="false" standardController="Support_Order__c" extensions="PopUpExtension">
+    <!--  apex:form >
+    	
+        <apex:pageBlock title="Different Opportunity List" id="pageBlock">
+            Consolidate a List of Different Opportunities:<br/>
+            <b>Opportunity Name</b><apex:inputField value="{!Support_Order__c.Opportunity__c}"/>
+            <apex:commandButton action="{!showOpportunities}" value="Show" onComplete="closeAndRefresh();" status="actionStatus" reRender="pageBlock"/>
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start"> 
+                    <img src="/img/loading.gif"/>
+                </apex:facet>
+            </apex:actionStatus>
+        </apex:pageBlock>
+    </apex:form> -->
+    <!--style>
+		.no-close .ui-dialog-titlebar-close {
+	    		display: none;
+    	};
+	</style>-->
+	<body onload="setupPage();">
+     	<div id="output"></div>
+	</body>
+
+    <script type="text/javascript">
+	    function setupPage() {
+	           sforce.connection.query("SELECT Id, Name, (Select Name, Current_Term_Start_Date__c from Support_Contracts__r LIMIT 2) from Opportunity Where Id IN (Select Opportunity__c from Support_Order__c) LIMIT 25",
+	           {onSuccess : layoutResults,
+	            onFailure : queryFailed,
+	            source : {
+                      output : document.getElementById("output"),
+                      startTime : new Date().getTime()
+                     }
+	           });
+	       }
+       function queryFailed(error, source) {
+			source.output.innerHTML = "<font color "red">
+		         An error has occurred: </font> <p>" + error;
+       }
+       
+       /**
+		* This method will be called when the toolkit receives a successful
+		* response from the server.
+		* @queryResult - result that server returned
+		* @source - state passed into the query method call.
+		*/
+		
+		function layoutResults(queryResult, source) {
+		
+		     if (queryResult.size > 0) {
+		     var output = "";
+		
+		     //get the records array
+		     var records = queryResult.getArray('records');
+		
+		     //loop through the records and construct html string
+		     for (var i = 0; i < records.length; i++) {
+		          var account = records[i];
+		          output += opportunity.Id + " " + opportunity.Name +
+		          " [Support Contract " + Support_Contracts__r.Name + "]<br>";
+		     }
+		
+		     //render the generated html string
+		     source.output.innerHTML = output;
+		     }
+		}
+	</script>
+</apex:page>
