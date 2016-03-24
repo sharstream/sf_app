@@ -1,5 +1,4 @@
 <apex:page sidebar="false" controller="DisplayAccountList">
-<<<<<<< HEAD
     <apex:sectionHeader title="Task 5"/>    
     <apex:form id="form">
         <apex:pageBlock title="My Contents">
@@ -18,24 +17,6 @@
         </apex:pageBlock> 
     </apex:form>
     <!--script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
-=======
-	<apex:sectionHeader title="Task 5"/>	
-	<apex:form id="form">
-		<apex:pageBlock title="My Contents">
-			<apex:pageMessages id="showAccountName"/>
-			<apex:pageBlockTable var="acc" value="{!Accounts}" onRowClick="show(this);">
-			 	<apex:commandLink value="Process Nickname" reRender="showAccountName" action="{!displayMsg}">
-					{!acc.Name}<apex:param name="nickName" value="{!acc.Name}" assignTo="{!id1}"/>
-				</apex:commandLink>
-				<apex:column headerValue="Name" value="{!acc.Name}"/>	 			
-				<apex:column headerValue="Billing State" value="{!acc.BillingState}" />	
-				<apex:column headerValue="Phone" value="{!acc.Phone}" />	
-				<apex:column headerValue="Website" value="{!acc.Website}" />	  		
-			</apex:pageBlockTable>
-		</apex:pageBlock> 
-	</apex:form>
-	<!--script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script-->
->>>>>>> aee8b526709e2101d28ef3eb23ea489b6e4d44e8
     <style>       
         .selectedDataRow{      
             background-color: #ccffbb;         
@@ -43,32 +24,18 @@
     </style>   
     <script>    
      var previousrrow='';     
-<<<<<<< HEAD
      function show(rowVar){                 
         var classname1=rowVar.className;
-=======
-     function show(rowVar){              	
-       	var classname1=rowVar.className;
->>>>>>> aee8b526709e2101d28ef3eb23ea489b6e4d44e8
         rowVar.className="selectedDataRow";
         if(previousrrow==''){ 
             previousrrow=rowVar;
         }
-<<<<<<< HEAD
          else{  
              if(previousrrow.innerHTML!=rowVar.innerHTML){      
                  previousrrow.className=classname1; 
                  previousrrow=rowVar;       
              }
          }
-=======
-	     else{	
-	         if(previousrrow.innerHTML!=rowVar.innerHTML){		
-	             previousrrow.className=classname1;	
-	             previousrrow=rowVar;		
-	         }
-	     }
->>>>>>> aee8b526709e2101d28ef3eb23ea489b6e4d44e8
      };   
     </script>
 </apex:page>
