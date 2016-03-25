@@ -1,10 +1,3 @@
-/***********************************************
-* Copyright (c) 2016, ABB Enterprise Software Inc.
-* All rights reserved.
-* Author        :   David Perez(kitsunebrave)
-* Related Task  :   Ticket-00382254
-* Purpose       :   PopUp Extension Apex Class
-************************************************/
 public with sharing class PopUpExtension {
 
     public Opportunity opportunity{get; set;}
