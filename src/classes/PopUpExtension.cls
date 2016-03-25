@@ -15,11 +15,7 @@ public with sharing class PopUpExtension {
     	get;set;
   	}
     
-    public PopUpExtension(ApexPages.StandardController controller){
-        this.opportunity = (Opportunity)controller.getRecord();
-    }
-    
-    List<Support_Order__c> SupportOpps = [select Id, Name, Opportunity__r.Name from support_order__c];
+    List<Support_Order__c> SupportOpps = [select Id, Name, Opportunity__r.Name, Opportunity__c, Opportunity__r.AccountId from support_order__c];
   	List<WrappDiffOpp> differents = new List<WrappDiffOpp>(); 
   	
     
@@ -27,9 +23,11 @@ public with sharing class PopUpExtension {
 		try{
 			if(IsNotRepeat()){
 				for(WrappDiffOpp o : differents){
-					ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.INFO,'Different Opportunities with an Order Support: '+o.oppName+'.');
+					ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.CONFIRM,'Different Opportunities with an Order Support: '+o.oppName+'.');
 	            	ApexPages.addMessage(myMsg);
 				}
+				List<ApexPages.Message> messages = ApexPages.getMessages();
+				System.debug(messages);
 			}
 		}	
 		catch(exception e){
@@ -45,7 +43,7 @@ public with sharing class PopUpExtension {
   		}
   		
   		for(Support_Order__c obj : SupportOpps){		
-			WrappDiffOpp o = new WrappDiffOpp(obj.Name, false);
+			WrappDiffOpp o = new WrappDiffOpp(obj.Name, false, obj);
 			Integer i = 0;
 			while(i <= SupportOpps.size()){
 				if(obj.Opportunity__r.Name == SupportOpps[i+1].Opportunity__r.Name){
@@ -69,10 +67,11 @@ public with sharing class PopUpExtension {
   	public class WrappDiffOpp{
   		String oppName{get; set;}
   		Boolean notrepeat = false;
-  		
-  		public WrappDiffOpp(String poppName, Boolean pnotrepeat){
+  		Support_Order__c support = new Support_Order__c();
+  		public WrappDiffOpp(String poppName, Boolean pnotrepeat, Support_Order__c psupport){
   		 	this.oppName = poppName;
   		 	this.notrepeat = pnotrepeat;
+  		 	this.support = psupport;
   		}
   	}
 }
