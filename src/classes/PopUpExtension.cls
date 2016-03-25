@@ -9,6 +9,8 @@ public with sharing class PopUpExtension {
 
     public Opportunity opportunity{get; set;}
     
+    public PopUpExtension(){}
+    
     public List<WrappDiffOpp> lstWrapperOpp{
     	get;set;
   	}
@@ -43,10 +45,10 @@ public with sharing class PopUpExtension {
   		}
   		
   		for(Support_Order__c obj : SupportOpps){		
-			WrappDiffOpp o = new WrappDiffOpp();
+			WrappDiffOpp o = new WrappDiffOpp(obj.Name, false);
 			Integer i = 0;
 			while(i <= SupportOpps.size()){
-				if(obj.Name == SupportOpps[i].Opportunity__r.Name){
+				if(obj.Opportunity__r.Name == SupportOpps[i+1].Opportunity__r.Name){
 					i++;
 					continue;		
 				}
@@ -67,5 +69,10 @@ public with sharing class PopUpExtension {
   	public class WrappDiffOpp{
   		String oppName{get; set;}
   		Boolean notrepeat = false;
+  		
+  		public WrappDiffOpp(String poppName, Boolean pnotrepeat){
+  		 	this.oppName = poppName;
+  		 	this.notrepeat = pnotrepeat;
+  		}
   	}
 }

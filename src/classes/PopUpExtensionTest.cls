@@ -3,18 +3,21 @@
 * All rights reserved.
 * Author        :   David Perez(kitsunebrave)
 * Related Task  :   Ticket-00382254
-* Purpose       :   PopUp Extension Apex Class
+* Purpose       :   PopUp Extension Unit Test
 ************************************************/
 @isTest
 private class PopUpExtensionTest {
 	
+	
     @isTest static void TestMain(){
     	// TO DO: implement unit test
 		
-		PopUpExtension controller = new PopUpExtension();
-		System.assert(controller != null);
+		PopUpExtension popupext = new PopUpExtension();
+		System.assert(popupext != null);
+		
+    	popupext.WrappDiffOpp pwrapper = new popupext.WrappDiffOpp('AnyName',false); 
     	
-    	List<Opportunity> supports = (Opportunity)controller.lstWrapperOpp();
+    	List<wrapper> supports = popupext.lstWrapperOpp();
     	System.assert(supports != null);
     	
     	for(Opportunity o : supports){
@@ -24,10 +27,10 @@ private class PopUpExtensionTest {
 	    		
 	    		System.assertEquals(o.Account_Name__c,'Ameren Services Company');   		
 	    	 	System.assertEquals(o.Opportunity__c,'ICE - Parts and Cables (E-7656)');
-    	 		System.assert(true, popupExtension.IsNotRepeat());
+    	 		System.assert(true, popupext.IsNotRepeat());
 	    	}
 	    	catch (exception e){
-	    		System.assert(false, popupExtension.IsNotRepeat(), ApexPages.Severity.ERROR,'Error Occured while showing a list of opportunities '+e.getMessage());
+	    		System.assert(false, popupext.IsNotRepeat(), ApexPages.Severity.ERROR,'Error Occured while showing a list of opportunities '+e.getMessage());
 	    	} 	
     	}
 	}
