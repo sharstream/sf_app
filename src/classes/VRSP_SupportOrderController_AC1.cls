@@ -88,9 +88,6 @@ public without sharing class VRSP_SupportOrderController_AC1 {
   	
   public PageReference save(){
     String survivingSOId = ApexPages.currentPage().getParameters().get('radioName');
-    //String IdOpp = [SELECT Id FROM Opportunity__r WHERE Id = :ApexPages.currentPage().getParameters().get('id')];
-    //String OppId = ApexPages.currentPage().getParameters().get('id');
-    //System.debug('>>>>>>OppID: '+OppId);
     System.debug('>>>>>>survivingSOId'+survivingSOId);
     if(survivingSOId != null && survivingSOId.length() > 0){
       Boolean isSuccess = saveFunctionality(survivingSOId);
@@ -136,32 +133,22 @@ public without sharing class VRSP_SupportOrderController_AC1 {
     }
     
     //Ventyx Support Order Consolidation (Case 5150)
-    String log = '';
     String id15 = '';
     for(SuppportOrderWrapper soWrapper :lstSuppportOrderWrapper){
       if(soWrapper.isChecked == true && soWrapper.objSO.Id != survivingSOId){
         if(survivingPriceBookId!=soWrapper.PriceBookId)
         {
-    		log+='>>>>>>PriceBook1: '+soWrapper.PriceBookId;
             Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'All the selected Support Orders should be from same Price Book..!'));
             return false;
             break;
         }     
-        if(survivingOppId != soWrapper.Opportunity){  
-	      	log+=', >>>>>>OpportunityId: '+soWrapper.Opportunity;	
+        if(survivingOppId != soWrapper.Opportunity){  	
 		    Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'You cannot merge 2 support orders if they do not have the same opportunities..!'));
 		    return false;
 		    break;
       	}           
       }
-      
-	    /*else {
-	    	//Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'Your support orders was merged with the same opportunities..!'));
-	        return true;
-	        break;
-	    } */
     }
-    System.debug(log);
     
     if(mapSelectedSO.isEmpty()){
       Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO,
