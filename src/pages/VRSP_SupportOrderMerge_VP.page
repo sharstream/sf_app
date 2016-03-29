@@ -8,7 +8,7 @@ Purpose       :   Support Orders Merging functionality
 Amit K A : 04 April,2013 T-128566
 eightCloud : 14 Feb 2015 to accomodate Pricing Model Changes
 ************************************************************************--> 
-<apex:page standardController="Support_Order__c" extensions="VRSP_SupportOrderController_AC">
+<apex:page standardController="Support_Order__c" extensions="VRSP_SupportOrderController_AC1">
   <apex:form id="formMain">
     <apex:pageMessages /> 
     <apex:sectionHeader subTitle="Merge Support Order" Title="Merge Support Order">
@@ -99,7 +99,7 @@ eightCloud : 14 Feb 2015 to accomodate Pricing Model Changes
         </apex:column>
         <apex:column headerClass="tableHeading">
         	<apex:facet name="header">Opportunity</apex:facet>
-        	<apex:outputText value="{!t.objSO.Opportunity__r.Name}" rendered="true"/>
+        	<apex:outputField id="opportunity" value="{!t.objSO.Opportunity__c}" rendered="true"/>
         </apex:column>
         
       </apex:dataTable>
@@ -108,28 +108,24 @@ eightCloud : 14 Feb 2015 to accomodate Pricing Model Changes
   <script src="/soap/ajax/29.0/connection.js" type="text/javascript"></script>
   <script src="/soap/ajax/29.0/apex.js" type="text/javascript"></script>
   <script  type="text/javascript">
-	  function confirmation(){
-	    if(ValidatePage()){
-	   		var query = "SELECT Id, Name, (Select Name, Current_Term_Start_Date__c from Support_Contracts__r) from Opportunity Where Id IN (Select Opportunity__c from Support_Order__c) LIMIT 2";
-	      	var records = sforce.connection.query(query).getArray('records');
-	      	if(!records.isEmpty() /*And both are distinct*/){
-	      		var r=confirm("You cannot merge 2 support orders if they do not have the same opportunities");
-	      		return r;
-	      	}      	
-	    }
-	    else 
-	      return false;
-	  }
-	  function ValidatePage()
-	  {
-	    var radioButtons = document.getElementsByName('radioName');
-	    for( i = 0; i < radioButtons.length; i++ ) {
-	        if(radioButtons[i].checked) {
-	            return true;
-	        }
-	    }
-	    alert('Please select a support order as Survivor Support Order');
-	    return false;
-	  }
+  function confirmation(){
+    if(ValidatePage()){
+      var r=confirm("This action is going to consolidate the selected Support Orders. Please press OK to continue");
+      return r;
+    }
+    else 
+      return false;
+  }
+  function ValidatePage()
+  {
+    var radioButtons = document.getElementsByName('radioName');
+    for( i = 0; i < radioButtons.length; i++ ) {
+        if(radioButtons[i].checked) {
+            return true;
+        }
+    }
+    alert('Please select A support order as Survivor Support Order');
+    return false;
+  }
   </script>
 </apex:page>
