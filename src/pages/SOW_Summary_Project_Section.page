@@ -1,18 +1,32 @@
 <apex:page sidebar="false" controller="SOW_Summary_Project_Controller">
-	<apex:form>
+	<apex:form >
 		
 		<apex:pageBlock title="SOW Summary">
-			<apex:pageBlockSection value="{!projects}" var="pro">
-                <apex:inputField value="{!pro.SOW_Sold_Hours__c}" label="SOW Sold Hours"/>
-				<apex:inputField value="{!pro.SOW_Projected_Cost__c}" label="SOW Projected Cost" />
-				<apex:inputField value="{!pro.SOW_Average_Standard_Price__c}" label="SOW Average Standard Price" />
-			</apex:pageBlockSection>
-			<apex:pageBlockSection>
-				<apex:inputField value="{!pro.SOW_Average_Sell_Price__c}" label="SOW Average Sell Price" />
-				<apex:inputField value="{!pro.SOW_Customer_Price__c}" label="SOW Customer Price" />
-				<apex:inputField value="{!IF(pro.pse__Billing_Type__c == 'Time and Materials') pro.CalculateMarginFixedPrice}" label="SOW Margin % TM" />
-				<apex:inputField value="{!IF(pro.pse__Billing_Type__c == 'Fixed Price') pro.CalculateMarginFixedPrice}" label="SOW Margin % Fixed Price" />
-			</apex:pageBlockSection>
+			<apex:pageBlockTable value="{!Resources}" var="rsc">
+                <apex:pageBlockSection >
+	                <apex:inputField value="{!rsc.pse__Project__r.SOW_Sold_Hours__c}" label="SOW Sold Hours"/>
+					<apex:inputField value="{!rsc.pse__Project__r.SOW_Projected_Cost__c}" label="SOW Projected Cost" />
+					<apex:inputField value="{!rsc.pse__Project__r.SOW_Average_Standard_Price__c}" label="SOW Average Standard Price" />
+				</apex:pageBlockSection>
+				<apex:pageBlockSection >
+				
+					<apex:inputField value="{!rsc.pse__Project__r.SOW_Average_Sell_Price__c}" label="SOW Average Sell Price" />
+					<apex:inputField value="{!rsc.pse__Project__r.SOW_Customer_Price__c}" label="SOW Customer Price" />
+					
+					<apex:outputPanel id="MarginTime" rendered="{!IF(rsc.pse__Project__r.pse__Billing_Type__c == 'Time and Materials',true,false)}">
+						<apex:outputText value="{0, number, #0.00}%">						
+                    		{SOW Margin % TM}<apex:param value="{!Calculate}"/>               	
+                  		</apex:outputText>
+					</apex:outputPanel>
+					
+					<apex:outputPanel id="MarginFixedPrice" rendered="{!IF(rsc.pse__Project__r.pse__Billing_Type__c == 'Fixed Price',true,false)}">
+						<apex:outputText value="{0, number, #0.00}%">						
+                    		{SOW Margin % Fixed Price}<apex:param value="{!Calculate}"/>             	
+                  		</apex:outputText>
+					</apex:outputPanel>
+
+				</apex:pageBlockSection>
+			</apex:pageBlockTable>
 		</apex:pageBlock>
 	
 	</apex:form>
