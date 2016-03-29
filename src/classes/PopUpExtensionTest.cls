@@ -3,6 +3,7 @@ public with sharing class PopUpExtensionTest {
         @isTest static void DifferentOppTest(){
     	
     	//PopUpExtension popupext = new PopUpExtension();
+    	//Chris
     	String log = '';
     	log += '*********************************Start Debugging**************************************';
 		
