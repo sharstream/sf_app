@@ -8,7 +8,7 @@ public with sharing class PopUpExtension {
     	get;set;
   	}
     
-    List<Support_Order__c> SupportOpps = [select Id, Name, Opportunity__r.Name, Opportunity__c, Opportunity__r.AccountId from support_order__c];
+    List<Support_Order__c> SupportOpps = [select Id, Name, Opportunity__r.Name, Opportunity__c, Opportunity__r.AccountId from support_order__c LIMIT 1];
   	List<WrappDiffOpp> differents = new List<WrappDiffOpp>(); 
   	
     
@@ -67,4 +67,10 @@ public with sharing class PopUpExtension {
   		 	this.support = psupport;
   		}
   	}
+  	
+  	public static final Integer MAX_ARRAY_VALUE = 1000;
+  	public Boolean isFull(){ return MAX_ARRAY_VALUE == differents.size(); }
+  	
+  	public class OpportunityListOverflowException extends Exception {}
+  	public class NullValueNotAllowedException extends Exception {}
 }

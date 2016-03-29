@@ -1,0 +1,128 @@
+<apex:page standardController="Opportunity" extensions="psaOpportunityResourceRoleSummary">
+  <style>
+    .rightAlign { text-align : right;}
+  </style>
+ <apex:form >
+  <apex:pagemessages />
+  <apex:pageBlock >
+      <table style="width:100%;margin-left:0px; margin-right:0px;">
+      <apex:repeat value="{!resourceRequestWrapperList}" var="wrapper">
+        <tr>
+            <td styleClass="header" style="font-weight: bold">{!wrapper.opptyProductName}</td>
+        </tr>
+        <tr>
+          <!-- <apex:column headerValue="Role" value="{!wrapper.rr.pse__Resource_Role__c}" > -->
+            <td width="98%">
+              <apex:pageBlockTable id="pbt" value="{!wrapper.rrList}" var="rr" style="width:98%; margin-left:0px; margin-right:0px;">
+                  <apex:column headerValue="Role"> <a target="_parent" href="/{!rr.id}">{!rr.pse__Resource_Role__c} </a>
+                    <apex:facet name="footer">Budgeted Hours And <br/>Est Revenue and Cost</apex:facet>
+                </apex:column>
+
+
+        <!--
+        <apex:column headerValue="Product List">
+        <apex:selectList id="prod" styleclass="std" size="1" value="{!wrapper.OptyProductId}" >
+            <apex:selectOptions value="{!productList}"/>
+        </apex:selectList>
+        </apex:column>
+        -->
+
+
+              <apex:column headerValue="Start Date" value="{!rr.pse__Start_Date__c}">
+                <apex:facet name="footer"> </apex:facet>
+              </apex:column>
+
+              <apex:column headerValue="Start Date" value="{!rr.pse__End_Date__c}">
+                <apex:facet name="footer"> </apex:facet>
+
+              </apex:column>
+
+              <apex:column value="{!rr.pse__SOW_Hours__c}">
+                <apex:facet name="header">
+                    Total Hours<br/>Per Role
+                </apex:facet>
+                <apex:facet name="footer"> 
+                  <apex:outputText value="{0,number,###,###,##0.00}" >
+                     <apex:param value="{!wrapper.totalRRHours}"/>
+                  </apex:outputText> 
+                </apex:facet>
+              </apex:column>
+
+              <apex:column headerValue="Normal Bill Rate" value="{!rr.Normal_Bill_Rate__c}">
+                <apex:facet name="footer"> {!wrapper.optyCurrencyIsoCode} {!wrapper.averageStandardRate}</apex:facet>
+              </apex:column>
+
+              <apex:column headerValue="Discount %" value="{!rr.Discount__c}">
+                <apex:facet name="footer"> {!wrapper.totalDiscountPct}%</apex:facet>
+              </apex:column>
+
+              <apex:column headerValue="Sell Price" value="{!rr.Sell_Price__c}">
+                <apex:facet name="footer"> {!wrapper.optyCurrencyIsoCode} {!wrapper.averageDiscountRate}</apex:facet>
+              </apex:column>
+
+
+              <apex:column headerValue="T&M Total" value="{!rr.T_M_Total__c}">
+                <apex:facet name="footer">
+                  <apex:outputText value="{!wrapper.optyCurrencyIsoCode} {0,number,###,###,##0.00}" >
+                            <apex:param value="{!wrapper.totalDiscountRevenue}"/>
+                   </apex:outputText> 
+                 </apex:facet>
+              </apex:column>
+
+
+              <apex:column headerValue="Fixed Price Total" value="{!rr.Fixed_Price_Total__c}">
+                <apex:facet name="footer">
+                  <apex:outputText value="{!wrapper.optyCurrencyIsoCode} {0,number,###,###,##0.00}" >
+                        <apex:param value="{!wrapper.totalFixedPriceRevenue}"/>
+                   </apex:outputText> 
+                 </apex:facet>
+              </apex:column>
+
+              <apex:column headerValue="Cost Rate">
+                <apex:facet name="footer"> 
+                    <apex:outputText value="{!wrapper.optyCurrencyIsoCode} {0,number,###,###,##0.00}" >
+                        <apex:param value="{!wrapper.averageCostRate}"/>
+                   </apex:outputText> 
+                </apex:facet>
+                    <apex:outputText value="{!wrapper.optyCurrencyIsoCode} {0,number,###,###,##0.00}" >
+                        <apex:param value="{!rr.pse__Average_Cost_Rate_Number__c}"/>
+                   </apex:outputText> 
+              </apex:column>
+
+              <apex:column headerValue="Projected Cost" value="{!rr.Projected_Cost__c}">
+                <apex:facet name="footer"> 
+                  <apex:outputText value="{!wrapper.optyCurrencyIsoCode} {0,number,###,###,##0.00}" >
+                        <apex:param value="{!wrapper.totalProjectedCost}"/>
+                  </apex:outputText> 
+                </apex:facet>
+              </apex:column>
+              <apex:column headerValue="T&M Margin">
+                <apex:facet name="footer"> 
+                 <apex:outputText value="{0, number, #0.00}%">
+                    <apex:param value="{!wrapper.tmMargin}"/>
+                  </apex:outputText> 
+                </apex:facet>
+                 <apex:outputText value="{0, number, #0.00}%">
+                    <apex:param value="{!(1-(rr.Projected_Cost__c / (rr.Sell_Price__c * rr.pse__SOW_Hours__c))) *100}"/>
+                  </apex:outputText>
+              </apex:column>
+              
+              <apex:column headerValue="FP Margin">
+                <apex:facet name="footer"> 
+                <apex:outputText value="{0, number, #0.00}%">
+                    <apex:param value="{!wrapper.ffMargin}"/>
+                </apex:outputText> 
+                </apex:facet>
+                <apex:outputText value="{0, number, #0.00}%">
+                    <apex:param value="{!(1-(rr.Projected_Cost__c / rr.Fixed_Price_Total__c)) *100}"/>
+                </apex:outputText>
+              </apex:column>
+        
+            </apex:pageBlockTable>
+        </td>
+        </tr>
+    </apex:repeat>
+    </table>
+  </apex:pageBlock>   
+ </apex:form>
+</apex:page>

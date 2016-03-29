@@ -1,0 +1,131 @@
+<!--**********************************************************************
+Author        :   Appirio Offshore (Sunil Gupta)
+Created       :   Feb 16, 2013
+Related Task  :   T-118184
+Purpose       :   Support Orders Merging functionality
+
+//Modification  
+Amit K A : 04 April,2013 T-128566
+eightCloud : 14 Feb 2015 to accomodate Pricing Model Changes
+************************************************************************--> 
+<apex:page standardController="Support_Order__c" extensions="VRSP_SupportOrderController_AC1">
+  <apex:form id="formMain">
+    <apex:pageMessages /> 
+    <apex:sectionHeader subTitle="Merge Support Order" Title="Merge Support Order">
+    </apex:sectionHeader>
+    
+    <!--<apex:pageBlock title="No records found" id="pbNoRecordsFound" rendered="{!lstSuppportOrderWrapper.size <1}">  //Commented out for SFDC Request 3976 -->
+    <apex:pageBlock title="No records found" id="pbNoRecordsFound" rendered="{!lstSuppportOrderWrapper.size <2}">
+      <apex:pageBlockButtons >
+        <apex:commandButton action="{!cancel}" value="Cancel"/>
+      </apex:pageBlockButtons>
+      <apex:pageblockSection >
+        <apex:pageBlockSectionItem >
+          No records found for merging.
+        </apex:pageBlockSectionItem>
+      </apex:pageblockSection>
+    </apex:pageBlock>
+     
+    <!--<apex:pageBlock title="Merge Support Order" mode="edit" id="pbMain" rendered="{!lstSuppportOrderWrapper.size >0}"> //Commented out for SFDC Request 3976 -->
+    <apex:pageBlock title="Merge Support Order" mode="edit" id="pbMain" rendered="{!lstSuppportOrderWrapper.size >1}">
+      <apex:pageBlockButtons >
+        <apex:commandButton action="{!save}" onClick="return confirmation();" value="Save"/>
+        
+        <apex:commandButton action="{!cancel}" value="Cancel"/>
+      </apex:pageBlockButtons>
+      <apex:dataTable cellspacing="3" cellpadding="2" border="0" value="{!lstSuppportOrderWrapper}"
+        var="t" id="theTable" rowClasses="odd,even" >
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Merge</apex:facet>
+          <apex:inputCheckbox id="chk" value="{!t.isChecked}"/>
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Survivor Support Order</apex:facet>
+            <input type="radio" name="radioName" value="{!t.supportOrderId}" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Support Order Name</apex:facet>
+          <apex:outputText value="{!t.supportOrderName}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Contract Number</apex:facet>
+          <apex:outputText value="{!t.objSO.Contract__r.ContractNumber}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Type</apex:facet>
+          <apex:outputText value="{!t.objSO.Support_Order_Type__c}" rendered="true" />
+        </apex:column>        
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Account</apex:facet>
+          <apex:outputText value="{!t.objSO.Contract__r.Account.Name}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Status</apex:facet>
+          <apex:outputText value="{!t.objSO.Status__c}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Contract Execution Date</apex:facet>
+          <apex:outputText value=" {0,date,MM/dd/yyyy }">
+            <apex:param value="{!t.objSO.Contract_Date__c}"/>
+          </apex:outputText>          
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Current Term Start Date</apex:facet>
+          <apex:outputText value=" {0,date,MM/dd/yyyy }">
+            <apex:param value="{!t.objSO.Current_Term_Start_Date__c}"/>
+          </apex:outputText> 
+          
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Current Term End Date</apex:facet>
+          <apex:outputText value=" {0,date,MM/dd/yyyy }">
+            <apex:param value="{!t.objSO.Current_Term_End_Date__c}"/>
+          </apex:outputText>          
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Annual Support Fees</apex:facet>
+          <apex:outputText value="{!t.objSO.Annual_Support_Fees__c}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Agreement End Date</apex:facet>
+          <apex:outputText value=" {0,date,MM/dd/yyyy }">
+            <apex:param value="{!t.objSO.Agreement_End_Date__c}"/>
+          </apex:outputText>           
+        </apex:column>
+        
+        <apex:column headerClass="tableHeading">
+          <apex:facet name="header">Price Book</apex:facet>
+          <apex:outputText value="{!t.PriceBookName}" rendered="true" />
+        </apex:column>
+        <apex:column headerClass="tableHeading">
+        	<apex:facet name="header">Opportunity</apex:facet>
+        	<apex:outputField id="opportunity" value="{!t.objSO.Opportunity__c}" rendered="true"/>
+        </apex:column>
+        
+      </apex:dataTable>
+    </apex:pageBlock>
+  </apex:form>
+  <script src="/soap/ajax/29.0/connection.js" type="text/javascript"></script>
+  <script src="/soap/ajax/29.0/apex.js" type="text/javascript"></script>
+  <script  type="text/javascript">
+  function confirmation(){
+    if(ValidatePage()){
+      var r=confirm("This action is going to consolidate the selected Support Orders. Please press OK to continue");
+      return r;
+    }
+    else 
+      return false;
+  }
+  function ValidatePage()
+  {
+    var radioButtons = document.getElementsByName('radioName');
+    for( i = 0; i < radioButtons.length; i++ ) {
+        if(radioButtons[i].checked) {
+            return true;
+        }
+    }
+    alert('Please select A support order as Survivor Support Order');
+    return false;
+  }
+  </script>
+</apex:page>

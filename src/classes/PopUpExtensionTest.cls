@@ -1,7 +1,10 @@
 @isTest
 public with sharing class PopUpExtensionTest {
-        @isTest static void DifferentOppTest(){
-    	
+    
+    @isTest static void BasicTest(){}
+    
+    @isTest static void DifferentOppTest(){
+	
     	//PopUpExtension popupext = new PopUpExtension();
     	//Chris
     	String log = '';
@@ -64,4 +67,20 @@ public with sharing class PopUpExtensionTest {
 		Support_Order__c supp = [SELECT Id, Support_Order_Type__c FROM Support_Order__c LIMIT 1];
 		System.assertEquals('Evaluation',supp.Support_Order_Type__c);
 	}
+	
+	@isTest static void nullValueNotAllowedExceptionTest() {
+
+	    PopUpExtension popupext = new PopUpExtension();
+	    List<PopUpExtension.WrappDiffOpp> listOpp = new List<PopUpExtension.WrappDiffOpp>();
+	
+	    try{
+	        listOpp.add(null);	
+	    }catch (exception e){
+	        // Exit the test if the expected NullValueNotAllowedException is thrown.	
+	        ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,'Exit the test if the expected NullValueNotAllowedException is thrown: '+e.getMessage());
+            ApexPages.addMessage(myMsg);	
+	    }	
+	    // Fail the test if the expected NullValueNotAllowedException is not thrown.	
+	    System.assert(false, 'A NullValueNotAllowedException was expected, but was not thrown.');
+	}	
 }
