@@ -98,6 +98,10 @@ eightCloud : 14 Feb 2015 to accomodate Pricing Model Changes
           <apex:outputText value="{!t.PriceBookName}" rendered="true" />
         </apex:column>
         <apex:column headerClass="tableHeading">
+        	<apex:facet name="header">Escalation Floor</apex:facet>
+        	<apex:outputField id="escalation" value="{!t.objSO.Escalation_Floor__c}" rendered="true"/>
+        </apex:column>
+        <apex:column headerClass="tableHeading">
         	<apex:facet name="header">Opportunity</apex:facet>
         	<apex:outputField id="opportunity" value="{!t.objSO.Opportunity__c}" rendered="true"/>
         </apex:column>

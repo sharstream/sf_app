@@ -58,6 +58,7 @@ public without sharing class VRSP_SupportOrderController_AC1 {
                                          Agreement_End_Date__c, 
                                          Contract__r.Account.Name,
                                          Opportunity__r.Name,
+                                         Escalation_Floor__c,
                                          Opportunity__r.Pricebook2.Name,
                                          Opportunity__r.Pricebook2.id
                                   FROM Support_Order__c 
@@ -79,6 +80,7 @@ public without sharing class VRSP_SupportOrderController_AC1 {
       objWrapper.supportOrderName = so.Name;
       objWrapper.supportOrderId = so.Id;
       objWrapper.objSO = so;
+      objWrapper.EscalationField = so.Escalation_Floor__c;
       objWrapper.Opportunity = so.Opportunity__c;
       objWrapper.PriceBookId= so.Opportunity__r.Pricebook2.Id;
       objWrapper.PriceBookName= so.Opportunity__r.Pricebook2.Name;
@@ -110,6 +112,7 @@ public without sharing class VRSP_SupportOrderController_AC1 {
     Support_Order__c survivingSupportOrder; 
     String survivingPriceBookId='';
     String survivingOppId = '';
+    Decimal escalationId = 0.00;
     
     Map<Id,Support_Order__c> mapSelectedSO = new Map<Id,Support_Order__c>();
     System.debug('>>>>>>lstSuppportOrderWrapper'+lstSuppportOrderWrapper);
@@ -129,6 +132,7 @@ public without sharing class VRSP_SupportOrderController_AC1 {
         survivingSupportOrder = soWrapper.objSO;
         survivingPriceBookId=soWrapper.PricebookId;
         survivingOppId=soWrapper.Opportunity;
+        escalationId=soWrapper.EscalationField;
       }
     }
     
@@ -143,10 +147,15 @@ public without sharing class VRSP_SupportOrderController_AC1 {
             break;
         }     
         if(survivingOppId != soWrapper.Opportunity){  	
-		    Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'You cannot merge 2 support orders if they do not have the same opportunities..!'));
+		    Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'You cannot merge support orders if they do not have the same opportunities..!'));
 		    return false;
 		    break;
-      	}           
+      	}    
+      	if(escalationId != soWrapper.EscalationField){  	
+		    Apexpages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'You cannot merge support orders if they do not have the same Escalation Floor..!'));
+		    return false;
+		    break;
+      	}          
       }
     }
     
@@ -369,7 +378,8 @@ public without sharing class VRSP_SupportOrderController_AC1 {
     public String supportOrderId{get;set;}
     public String PricebookId{get;set;}
     public String PricebookName{get;set;}
-    public String Opportunity{get;set;} 
+    public String Opportunity{get;set;}
+    public Decimal EscalationField{get;set;} 
     public SuppportOrderWrapper() {
     }
   }   
