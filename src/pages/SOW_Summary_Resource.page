@@ -1,42 +1,26 @@
-<apex:page sidebar="false" standardController="pse__Proj__c" id="proj" extensions="SOW_Summary_Project_Controller">
-    <style>
-        h1 {
-            text-align: right;
-        }
-        table {
-            
-            margin-left: auto;
-            margin-right: auto;
-        }
-        td {
-            width: 25%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-    <apex:form >
-		<apex:repeat value="{!Resources}" var="rsc">
-		     <table align="left">
-		        <tr> <td><h1>SOW Sold Hours: </h1></td> <td><apex:outputField value="{!rsc.pse__Project__r.SOW_Sold_Hours__c}" /></td></tr>                       
-		        <tr> <td><h1>SOW Projected Cost: </h1></td> <td><apex:outputField value="{!rsc.pse__Project__r.SOW_Projected_Cost__c}" /></td></tr>
-		        <tr> <td><h1>SOW Average Standard Price: </h1></td> <td><apex:outputField value="{!rsc.pse__Project__r.SOW_Average_Standard_Price__c}" /></td></tr>  
-		      </table>  
-		      <table align="right"> 
-		        <tr> <td><h1>SOW Average Sell Price: </h1></td> <td><apex:outputField value="{!rsc.pse__Project__r.SOW_Average_Sell_Price__c}" label="SOW Average Sell Price"/></td></tr>
-		        <tr> <td><h1>SOW Customer Price: </h1></td> <td><apex:outputField value="{!rsc.pse__Project__r.SOW_Customer_Price__c}" label="SOW Customer Price"/></td></tr>  
-		        
-		        
-		        <tr> <td><h1>Margin % TM: </h1></td> <td>
-		            <apex:outputPanel id="MarginTime" rendered="{!IF(rsc.pse__Project__r.pse__Billing_Type__c == 'Time and Materials',true,false)}">                     
-		                 <apex:outputText value="{!Calculate1}" />                 
-		            </apex:outputPanel>
-		        </td></tr>
-		        <tr> <td><h1>Margin % Fixed Price: </h1></td> <td>
-		            <apex:outputPanel id="MarginFixedPrice" rendered="{!IF(rsc.pse__Project__r.pse__Billing_Type__c == 'Fixed Price',true,false)}">                       
-		                <apex:outputText value="{!Calculate1}"/>                
-		            </apex:outputPanel>
-		        </td></tr>
-		      </table>
-		</apex:repeat>
+<apex:page sidebar="false" standardController="pse__Proj__c" id="proj" extensions="SOW_Summary_Project_Controller1">
+    <!-- apex:actionFunction name="showHideField" reRender="mySection"/ -->
+    
+    <apex:form >    
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="2">                     
+                <apex:outputText value="{!pse__Proj__c.SOW_Sold_Hours__c}" label="SOW Sold Hours" />    
+                <apex:outputText value="{!pse__Proj__c.SOW_Average_Sell_Price__c}" label="SOW Average Sell Price" />                        
+                <apex:outputText value="{!pse__Proj__c.SOW_Projected_Cost__c}" label="SOW Projected Cost" />            
+                <apex:outputText value="{!pse__Proj__c.SOW_Customer_Price__c}" label="SOW Customer Price" />                      
+                <apex:outputText value="{!pse__Proj__c.SOW_Average_Standard_Price__c}" label="SOW Average Standard Price" />                     
+                <!-- apex:outputPanel id="MarginTime" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Time and Materials',true,false)}" -->
+                    <apex:outputText value="{0, number, #0.00}%" label="SOW Margin % TM" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Time and Materials',true,false)}">                       
+                        <apex:param value="{!Calculate1}"/>                
+                    </apex:outputText>   
+                <!-- /apex:outputPanel -->          
+                <!--  apex:outputPanel id="MarginFixedPrice" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Fixed Price',true,false)}" -->
+                    <apex:outputText value="{0, number, #0.00}%" label="SOW Margin % Fixed Price" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Fixed Price',true,false)}">                       
+                        <apex:param value="{!Calculate1}"/>               
+                    </apex:outputText>
+                <!-- /apex:outputPanel -->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
     </apex:form>
 </apex:page>
