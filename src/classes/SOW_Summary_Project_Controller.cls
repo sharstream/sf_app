@@ -26,13 +26,18 @@ public with sharing class SOW_Summary_Project_Controller{
     }  
     public Decimal CalculateMarginFixedPrice(){
         for(pse__Resource_Request__c rsc : getResources()){
-            if(rsc.pse__Project__r.pse__Billing_Type__c == 'Time and Materials'){
-                Calculate1 += ((1-(rsc.Projected_Cost__c/(rsc.Sell_Price__c * rsc.pse__SOW_Hours__c)))*100)/getResources().size();
+            try{
+                if((rsc.pse__Project__r.pse__Billing_Type__c == 'Time and Materials') && (getResources().size() > 0)){
+                    Calculate1 += ((1-(rsc.Projected_Cost__c/(rsc.Sell_Price__c* rsc.pse__SOW_Hours__c)))*100)/getResources().size();
+                }
+                else if((rsc.pse__Project__r.pse__Billing_Type__c == 'Fixed Price') && (getResources().size() > 0)){
+                    Calculate1 += ((1-( rsc.Projected_Cost__c.doubleValue()/ rsc.Fixed_Price_Total__c.doubleValue()))*100)/getResources().size();
+                }
             }
-            else if(rsc.pse__Project__r.pse__Billing_Type__c == 'Fixed Price'){
-                Calculate1 += ((1-( rsc.Projected_Cost__c/ rsc.Fixed_Price_Total__c))*100)/getResources().size();
+            catch(exception e){
+                System.debug('Divide by 0, '+e);
             }
         }
-        return Calculate1;
+        return Calculate1.doubleValue();
     }
 }
