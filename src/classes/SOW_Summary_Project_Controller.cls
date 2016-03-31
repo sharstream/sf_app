@@ -1,10 +1,10 @@
-public with sharing class SOW_Summary_Project_Controller1 {
+public with sharing class SOW_Summary_Project_Controller {
     
     public pse__Proj__c proj{get;set;}
     public String projId{get;set;}
     public Decimal Calculate1{get; set;}
     
-    public SOW_Summary_Project_Controller1(ApexPages.StandardController controller){
+    public SOW_Summary_Project_Controller(ApexPages.StandardController controller){
         Calculate1= 0; 
         projId = controller.getRecord().Id; 
         CalculateMarginFixedPrice();
@@ -21,7 +21,7 @@ public with sharing class SOW_Summary_Project_Controller1 {
                     Projected_Cost__c,
                     Fixed_Price_Total__c                                                                        
                     FROM pse__Resource_Request__c 
-                    WHERE pse__Project__c =: projId];
+                    WHERE pse__Project__c =: projId LIMIT 1];
     }
     
     public Decimal CalculateMarginFixedPrice(){
