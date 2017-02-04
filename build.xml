@@ -27,7 +27,7 @@
   
     <!--Git and Ant Force.com migration Configuration-->
     <macrodef name="git">
-    <attribute name="dir" default="" />
+    <attribute name="dir" default="/Users/davidperez/Documents/applications/sfdc_app" />
     <attribute name="branch" default="master" />
     <sequential>
       <exec executable="git" dir="@{dir}">
@@ -41,7 +41,7 @@
     <target name="checkoutFromGit">
       <echo>Issuing git pull from directory: ${git.dir}</echo>
       <echo>Pulling from branch: ${git.branch}</echo>
-      <git dir="${git.dir}" branch="${git.branch}" />
+      <git dir="/Users/davidperez/Documents/applications/sfdc_app" branch="master" />
     </target>
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target 
@@ -166,12 +166,14 @@
     </target>
 
     <!-- Zip TrailBlazer sandbox -->
-    <target name="Deplotrailblazer">
+    <target name="sfdc_appDeploy">
+    <mkdir dir="deployPkgs"/>
     <sf:deploy 
       username="${sf.trailblazer.username}"
       password="${sf.trailblazer.password}"
       serverurl="${sf.prod.serverurl}"
-      zipFile="${sf.zipFile}"
+      retrieveTarget="pkgs"
+      deployRoot="src"
       autoUpdatePackage="true"
       checkOnly="false"
       rollbackOnError="true"/>
