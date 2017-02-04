@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditUserAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>FreezeUserAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LinkToSetupUserDetailAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ManagePermSetsAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>PasswordUnlockAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ResetPasswordAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>UserActivationAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Apttus_Approval__Approval_Level__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field moved to Approval Matrix table</description>
+        <externalId>false</externalId>
+        <label>Approval Level_OBSOLETE</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Level 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Level 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Level 3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Level 4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Level 5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Level 6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Apttus_Approval__Next_Level_Approver__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field moved to Approval Matrix table</description>
+        <externalId>false</externalId>
+        <label>Next Level Approver_OBSOLETE</label>
+        <relationshipName>Users</relationshipName>
+        <restrictedAdminField>false</restrictedAdminField>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Hierarchy</type>
+    </fields>
+    <fields>
+        <fullName>ManagerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Hierarchy</type>
+    </fields>
+    <listViews>
+        <fullName>ActiveUsers</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Users</label>
+    </listViews>
+    <listViews>
+        <fullName>AdminUsers</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>System Administrator</value>
+        </filters>
+        <label>Admin Users</label>
+    </listViews>
+    <listViews>
+        <fullName>AllUsers</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Users</label>
+    </listViews>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CORE.USER_ROLE.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USER_ROLE.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.PHONE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.EXTENSION</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.CELL</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.PHONE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.EMAIL</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <webLinks>
+        <fullName>Apttus_Approval__ChangeNextLevelApprover</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>sControl</linkType>
+        <masterLabel>Change Next Level Approver_OBSOLETE</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <scontrol>Apttus_Approval__aptsApproverChangeNextLevel</scontrol>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Approval__GenerateApprovalMatrix</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>sControl</linkType>
+        <masterLabel>Generate Approval Matrix_OBSOLETE</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <scontrol>Apttus_Approval__aptsApprovalMatrixValidate</scontrol>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Approval__GetBackupApprover</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>sControl</linkType>
+        <masterLabel>Set Backup Approver (Deprecated)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <scontrol>Apttus_Approval__aptsApprovalBackupApprover</scontrol>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Approval__InactivateUserApprovalMatrix</fullName>
+        <availability>online</availability>
+        <description>Inactivates the current user&apos;s approval matrix and transfers all inflight requests to the next level approver or backup admin user.  This action will happen automatically if a user is inactivated by unchecking the Active flag in the user record.</description>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>sControl</linkType>
+        <masterLabel>Inactivate User Approval Matrix</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <scontrol>Apttus_Approval__aptsApprovalInactivateUser</scontrol>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Approval__SetBackupApprover</fullName>
+        <availability>online</availability>
+        <description>Set Backup/Delegate Approver</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Set Backup/Delegate Approver</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/Apttus_Approval__BackupApprover?userId={!User.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Approval__ViewApprovalMatrix</fullName>
+        <availability>online</availability>
+        <description>View approval matrix for the user</description>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>View Approval Matrix</masterLabel>
+        <openType>sidebar</openType>
+        <page>Apttus_Approval__ApprovalMatrixView</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>
