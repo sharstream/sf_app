@@ -25,6 +25,24 @@
         </classpath>
     </taskdef>
   
+    <!--Git and Ant Force.com migration Configuration-->
+    <macrodef name="git">
+    <attribute name="dir" default="" />
+    <attribute name="branch" default="master" />
+    <sequential>
+      <exec executable="git" dir="@{dir}">
+          <arg value="pull" />
+          <arg value="origin" />
+          <arg value="@{branch}" />
+      </exec>
+    </sequential>
+    </macrodef>
+
+    <target name="checkoutFromGit">
+      <echo>Issuing git pull from directory: ${git.dir}</echo>
+      <echo>Pulling from branch: ${git.branch}</echo>
+      <git dir="${git.dir}" branch="${git.branch}" />
+    </target>
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target 
       name="retrieveMetadata">
@@ -66,6 +84,18 @@
       checkOnly="false"
       rollbackOnError="true"
       pollWaitMillis="40000"/>
+    </target>
+
+    <target name="prodDeployTrigger">
+      <sf:deploy 
+        username="${sf.prod.username}"
+        password="${sf.prod.password}"
+        serverurl="${sf.prod.serverurl}"
+        deployRoot="deactivation"
+        testLevel="RunLocalTests"
+        autoUpdatePackage="true"
+        checkOnly="true"
+        rollbackOnError="true"/>
     </target>
 
     <target 
