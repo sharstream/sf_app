@@ -1,0 +1,36 @@
+<apex:page sidebar="false" standardController="pse__Proj__c" id="projId" extensions="SOW_Summary_Project_Controller1">
+    <!-- apex:actionFunction name="showHideField" reRender="mySection"/ -->
+    
+    <apex:form >    
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="2">                     
+                <apex:outputText value="{0,number,###,###,##0.00}" label="SOW Sold Hours">
+                    <apex:param value="{!pse__Proj__c.SOW_Sold_Hours__c}"/>
+                </apex:outputText>      
+                <apex:outputText value="{!pse__Proj__c.CurrencyIsoCode} {0,number,###,###,##0.00}" label="SOW Average Sell Price">
+                    <apex:param value="{!pse__Proj__c.SOW_Average_Sell_Price__c}"/>
+                </apex:outputText>                                  
+                <apex:outputText value="{!pse__Proj__c.CurrencyIsoCode} {0,number,###,###,##0.00}" label="SOW Projected Cost">
+                    <apex:param value="{!pse__Proj__c.SOW_Projected_Cost__c}"/>
+                </apex:outputText>            
+                <apex:outputText value="{!pse__Proj__c.CurrencyIsoCode} {0,number,###,###,##0.00}" label="SOW Customer Price">
+                    <apex:param value="{!pse__Proj__c.SOW_Customer_Price__c}"/>
+                </apex:outputText>                        
+                <apex:outputText value="{!pse__Proj__c.CurrencyIsoCode} {0,number,###,###,##0.00}" label="SOW Average Standard Price"> 
+                    <apex:param value="{!pse__Proj__c.SOW_Average_Standard_Price__c}"/>
+                </apex:outputText>                         
+                <!-- apex:outputPanel id="MarginTime" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Time and Materials',true,false)}" -->
+                    <apex:outputText value="{0, number, #0.00}%" label="SOW Margin % TM" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Time and Materials',true,false)}">                       
+                        <apex:param value="{!Calculate1}"/>                
+                    </apex:outputText>   
+                <!-- /apex:outputPanel -->          
+                <!--  apex:outputPanel id="MarginFixedPrice" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Fixed Price',true,false)}" -->
+                    <apex:outputText value="{0, number, #0.00}%" label="SOW Margin % Fixed Price" rendered="{!IF(pse__Proj__c.pse__Billing_Type__c == 'Fixed Price',true,false)}">                       
+                        <apex:param value="{!Calculate1}"/>               
+                    </apex:outputText>
+                <!-- /apex:outputPanel -->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>
