@@ -11,9 +11,9 @@
          so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
          will be treated literally.
     -->
-    <condition property="sf.username"
+    <condition property="sf.trailblazer.username"
                value=""> <not> <isset property="sf.username"/> </not> </condition>
-    <condition property="sf.password"
+    <condition property="sf.trailblazer.password"
                value=""> <not> <isset property="sf.password"/> </not> </condition>
     <condition property="sf.sessionId"
                value=""> <not> <isset property="sf.sessionId"/> </not> </condition>
@@ -24,32 +24,30 @@
             <pathelement location="/Users/davidperez/Documents/applications/trailblazer/lib/ant-salesforce.jar" />          
         </classpath>
     </taskdef>
-  
+    
+    <available file=".git" type="dir" property="git.present"/>
+
     <!--Git and Ant Force.com migration Configuration-->
-    <macrodef name="git">
-    <attribute name="dir" default="/Users/davidperez/Documents/applications/sfdc_app" />
-    <attribute name="branch" default="https://github.com/sharstream/sf_app.git" />
-    <attribute name="command" />
-    <attribute name="failerror" default="false" />
-    <element name="args" optional="true" />
-    <sequential>
-      <echo message="git dir sfdc_app" />
-      <echo message="git pull" />
-      <exec executable="git" dir="/Users/davidperez/Documents/applications/sfdc_app">
-          <arg line="pull" />
-          <arg value="push" />
-          <arg value="origin" />
-          <arg value="master" />
-      </exec>
-      <exec executable="git" dir="@{dir}">
-        <arg line="@{command} @{options}" />
-        <args />
-      </exec>
-    </sequential>
+    <macrodef name="git" description="Git and Ant build configuration" backtrace="true">
+      <attribute name="dir" default="https://github.com/sharstream/sf_app.git" />
+      <attribute name="branch" default="master" />
+      <attribute name="command" default="pull" />
+      <attribute name="failerror" default="false" />
+      <element name="args" optional="true" />
+      <sequential>
+        <echo message="git dir ${dir}" />
+        <echo message="git pull" />
+        <exec executable="git" dir="/Users/davidperez/Documents/applications/sfdc_app" failifexecutionfails="false" errorproperty="">
+            <arg value="pull" />
+            <arg value="push" />
+            <arg value="origin" />
+            <arg value="master" />
+        </exec>
+      </sequential>
     </macrodef>
 
     <target name="checkoutFromGit">
-      <echo>Issuing git pull from directory: sfdc_app</echo>
+      <echo>Issuing git pull from directory: sf_app</echo>
       <echo>Pulling from branch: master</echo>
       <git dir="/Users/davidperez/Documents/applications/sfdc_app" branch="master" />
     </target>
@@ -57,9 +55,9 @@
     <target name="version" description="Commits all changes to version git">
       <input message="Commit message" addproperty="commit-message" />     
       <echo message="Commiting all changes with message ${commit-message}" />
-      <git command="add">
+      <git command="add" dir="https://github.com/sharstream/sf_app.git  " branch="master">
         <args>
-          <arg value="retrievePkgs" />
+          <arg value="retrievePkgs/" />
         </args>
       </git>
       <git command="commit">
