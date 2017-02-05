@@ -1,11 +1,26 @@
 <?xml version="1.0"?>
+<!--
+Copyright 2016 David Perez
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
 <project name="trailblazer"
          default="test"
          basedir="."
-         xmlns:sf="antlib:com.salesforce">
+         xmlns:sf="antlib:com.salesforce"
+         xmlns:git="antlib:com.rimerosolutions.ant.git">
 
     <property file="build.properties"/>
     <property environment="env"/>
+    <property name="executable-full-path" location=".git" />
+
 
     <!-- Setting default value for username, password and session id properties to empty string 
          so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
@@ -27,21 +42,31 @@
     
     <available file=".git" type="dir" property="git.present"/>
 
+    <!--Git user information for eclipse JGit plugin
+    <git:settings refId="gitSettingsReference"
+                  username="sharstream" password="123"
+                  name="dave" email="daverioverde@gmail.com" />
+    <git:git directory="repositoryCloneFolder" verbose="true" settingsRef="gitSettingsReference">
+      <git:clone uri="https://github.com/sharstream/sf_app.git" />
+      <git:checkout branchName="master" createBranch="true" />
+    </git:git-->
     <!--Git and Ant Force.com migration Configuration-->
-    <macrodef name="git" description="Git and Ant build configuration" backtrace="true">
+    <macrodef name="git" description="Git and Ant build configuration">
       <attribute name="dir" default="https://github.com/sharstream/sf_app.git" />
       <attribute name="branch" default="master" />
       <attribute name="command" default="pull" />
       <attribute name="failerror" default="false" />
       <element name="args" optional="true" />
       <sequential>
-        <echo message="git dir ${dir}" />
-        <echo message="git pull" />
-        <exec executable="git" dir="/Users/davidperez/Documents/applications/sfdc_app" failifexecutionfails="false" errorproperty="">
-            <arg value="pull" />
-            <arg value="push" />
-            <arg value="origin" />
-            <arg value="master" />
+        <echo message="git dir:sf_app" />
+        <echo message="downloading..." />
+        <exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+            <args>
+              <arg value="pull" />
+              <arg value="push" />
+              <arg value="origin" />
+              <arg value="master" />
+            </args>
         </exec>
       </sequential>
     </macrodef>
@@ -52,20 +77,28 @@
       <git dir="/Users/davidperez/Documents/applications/sfdc_app" branch="master" />
     </target>
 
-    <target name="version" description="Commits all changes to version git">
+    <target name="push" description="Commits all changes to version git">
+      <echo>*************************************************</echo>
+      <echo>****        Ant Git Manifest build file      ****</echo>
+      <echo>**** Doing Migration packaging with Ant/Git  ****</echo>
+      <echo>*************************************************</echo>
       <input message="Commit message" addproperty="commit-message" />     
-      <echo message="Commiting all changes with message ${commit-message}" />
+      <echo message="Commiting all changes with message: ${commit-message}" />
       <git command="add" dir="https://github.com/sharstream/sf_app.git  " branch="master">
         <args>
-          <arg value="retrievePkgs/" />
+          <arg value="git add ." />
         </args>
       </git>
       <git command="commit">
         <args>
-          <arg value="-am ${commit-message}" />
+          <arg value="git commit -am ${commit-message}" />
         </args>
       </git>
-      <git command="push" />
+      <git command="push">
+        <args>
+          <arg value="git push origin master" />
+        </args>
+      </git>
     </target>
 
     <!-- deploying Git and ant TrailBlazer sandbox -->
