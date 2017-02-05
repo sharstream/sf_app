@@ -1,0 +1,179 @@
+<apex:page controller="ReleaseSearchController" standardStylesheets="true" sidebar="false" docType="html-5.0" applyHtmlTag="false" applyBodyTag="false" showHeader="false">
+    <apex:stylesheet value="{!$Resource.release}" />
+    <apex:includeScript value="{!$Resource.approvals_jQuery_2_0_2}"/>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+            function selectAllCheckboxes(obj,receivedInputID){
+                var inputCheckBox = document.getElementsByTagName("input");
+                for(var i=0; i<inputCheckBox.length; i++){
+                    if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                        inputCheckBox[i].checked = obj.checked;
+                    }
+                }
+            }
+
+            // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+            $(window).on("load resize ", function() {
+              var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+              $('.tbl-header').css({'padding-right':scrollWidth});
+            }).resize();
+        </script>
+    <apex:form >
+        <apex:actionFunction action="{!find}" name="runEntitlement" reRender="table" />
+        <apex:actionFunction action="{!findVersion}" name="runVersion" reRender="table" />
+        <apex:actionFunction action="{!findComponent}" name="runComponent" reRender="table" />
+        <apex:actionFunction action="{!findBacklog}" name="runBacklog" reRender="table" />
+        <apex:actionFunction action="{!connectProdVersion}" name="filterVersion" reRender="versionTable" />
+        <apex:actionFunction action="{!connectVersComponent}" name="filterComponent" reRender="componentTable" />
+        <apex:actionFunction action="{!connectCompBacklog}" name="filterBacklog" reRender="backlogTable" />
+        <apex:pageMessages id="errors" />
+        <apex:pageBlock title="ABB Release Notes" mode="edit" id="wholePageId" >
+
+        <tr>
+            <td class="">
+                <p/>The Self-Service Release Notes Application is a web service offered by ABB to their customers as a 
+                    tool to obtain information between product versions. It also has a view and download facility.<p/>
+            </td>
+        </tr>
+            <table width="75%" id="firstTable">
+                <tr> 
+                <td>
+                    <apex:pageBlock title="Search Filter Selections" mode="edit" id="results"><p/>
+                    Please select items from left to right for each of the below categories.  The selections will be run as an 'OR' query for each filter and an 'AND' type of query across filters.
+                    e.g. '(Product P1 OR P2) AND (Version V1 OR V2) AND (Component C1 OR C2) AND (Backlog Group BG1 OR BG2)'
+                    Enter a Product Release, Product Version, Component or Backlog Group between line selections will add any newly selected filters to potentially reduce the results set of available data.
+                    This should aid in determining how your selections filter affect the presented data more effectively.<p/> 
+                        <table class="responstable" width="100%" border="2">
+                            <tr>
+                                <td width="75" valign="top"><b>Search by Product</b>
+                                    <div style="overflow:auto; height:250px;border-width:2px;">
+                                        <apex:pageBlockTable value="{!wrapProdDefaults}" var="product" id="productsList" rendered="{!NOT(ISNULL(wrapProdDefaults))}" >           
+                                            <apex:column width="25px">                                                          
+                                                <apex:inputCheckbox onclick="filterVersion(), runEntitlement()" value="{!product.selectedProduct}" id="prodCb"/>
+                                            </apex:column>                                           
+                                            <apex:column value="{!product.productDefault}" id="product1" />
+                                        </apex:pageBlockTable>
+                                    </div>
+                                </td>
+                                <td width="75" valign="top"><b>Search by Version</b>
+                                    <div style="overflow:auto; height:250px;">
+                                         <apex:pageBlockTable value="{!versionsToDisplay}" var="version" id="versionTable" rendered="{!NOT(ISNULL(versionsToDisplay))}" >
+                                            <apex:column width="25px">
+                                                <apex:inputCheckbox onclick="filterComponent(), runVersion()" value="{!version.selectedVer}" id="versCb"/>
+                                            </apex:column>
+                                            <apex:column style="width:10px" value="{!version.version}" id="version1" />
+                                        </apex:pageBlockTable>
+                                    </div>
+                                </td>
+                                <td width="75" valign="top"><b>Search by Component</b>
+                                    <div style="overflow:auto; height:250px;">
+                                        <apex:pageBlockTable value="{!componentsToDisplay}" var="component" id="componentTable" rendered="{!NOT(ISNULL(componentsToDisplay))}" >
+                                            <apex:column style="width:25px" >
+                                                <apex:inputCheckbox onclick="filterBacklog(), runComponent()" value="{!component.selectedComp}" id="compCb"/>
+                                            </apex:column>
+                                            <apex:column style="width:10px" value="{!component.component}" id="component1" />
+                                        </apex:pageBlockTable>
+                                    </div>
+                                </td>
+                                <td width="75" valign="top"><b>Search by Backlog</b>
+                                    <div style="overflow:auto; height:250px;">
+                                        <apex:pageBlockTable value="{!backlogsToDisplay}" var="backlog" id="backlogTable" rendered="{!NOT(ISNULL(backlogsToDisplay))}" >
+                                            <apex:column style="width:25px" >
+                                                <apex:inputCheckbox onclick="runBacklog()" value="{!backlog.selectedBack}" id="backCb"/>
+                                            </apex:column>
+                                            <apex:column style="width:10px" value="{!backlog.backlog}" id="backlog1" />
+                                        </apex:pageBlockTable>
+                                    </div>
+                                </td>
+                            </tr>    
+                        </table>
+                    </apex:pageBlock>
+                </td>
+                </tr>
+            </table>
+            <table width="75%" id="secondTable">
+                <tr>
+                <td>
+                    <apex:pageBlock title="Filter Query Results" mode="edit" id="bottomTableId"><p/>
+                    Once you run the query based upon filter selections, results will appear below.  Select one or more rows to Download Selected.
+                    Clicking on 'More Info' for a single line item renders that line item's data in PDF format for viewing.<p/>
+                        <table class="responstable" width="100%" border="2" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="100%" valign="top">
+									<div class="tbl-content" id="content" style="overflow:auto; height:400px; display: block;">
+									    <apex:pageBlockTable value="{!beforeWrapproducts}" var="itemProd" id="table" rendered="{!NOT(ISNULL(beforeWrapproducts))}" title="Results of the selection of Version/Entitlement Products on the initial page">         
+                                          	<apex:column >
+                                          		<apex:facet name="header">
+                                                    <apex:inputCheckbox onclick="selectAllCheckboxes(this,'{!$Component.table}', 'inputId')"/>
+                                                </apex:facet>
+                                            	<apex:inputCheckbox value="{!itemProd.selected}" id="inputId"/>
+                                            </apex:column>
+
+                                            <apex:column >
+                                                <apex:facet name="header">
+                                                    <apex:commandLink value="Product" action="{!toggleSort}" rerender="results" style="color: #000000;font-size: 10px; ; overflow:auto; height:250px;">
+                                                        <apex:param name="sortField" value="product" assignTo="{!sortField}"/>
+                                                    </apex:commandLink>
+                                                </apex:facet>            
+                                                <apex:outputText value="{!itemProd.product.Entitlement}"/>      
+                                            </apex:column>
+                                        
+                                            <apex:column >
+                                                <apex:facet name="header">
+                                                    <apex:commandLink value="Version" rerender="results" style="color: #000000;font-size: 10px; ; overflow:auto; height:250px;">
+                                                        <apex:param name="sortField" value="version" assignTo="{!sortField}"/>
+                                                    </apex:commandLink>
+                                                </apex:facet>
+                                                <apex:outputText value="{!itemProd.product.ProductVersion}"/>
+                                            </apex:column>
+                                       
+                                            <apex:column >
+                                                <apex:facet name="header">
+                                                    <apex:commandLink value="Component" rerender="results" style="color: #000000; font-size: 10px; ; overflow:auto; height:250px;">
+                                                        <apex:param name="sortField" value="component" assignTo="{!sortField}"/>
+                                                    </apex:commandLink>
+                                                </apex:facet>
+                                                <apex:outputText value="{!itemProd.product.Component}"/>
+                                            </apex:column>
+                                              
+                                            <apex:column >
+                                                <apex:facet name="header">
+                                                    <apex:commandLink value="Backlog Group" rerender="results" style="color: #000000;font-size: 10px; ; overflow:auto; height:250px;">
+                                                        <apex:param name="sortField" value="backlogGroup" assignTo="{!sortField}"/>
+                                                    </apex:commandLink>
+                                                </apex:facet>
+                                                <apex:outputText value="{!itemProd.product.Backlog}"/>
+                                            </apex:column>
+                                          
+                                            <apex:column style="width:75px;color: #fff;" headerValue="More Info">
+                                				<apex:commandLink action="{!clicked}" target="_blank"> More Info<apex:param name="clicked" assignTo="{!itemProd.clicked}" value="true" />
+                                				</apex:commandLink>
+                                			</apex:column>
+                                        </apex:pageBlockTable>
+									</div>
+								</td>
+                            </tr>
+                        </table>
+                        <p/>
+            	        <apex:selectRadio value="{!GroupByOption}">
+                	    Group release note information by one of the following types<p/>
+                            <apex:selectOptions value="{!groupbys}"/>
+                        </apex:selectRadio>
+                        <p/>
+                        <apex:pageBlockButtons location="bottom">
+                            <apex:commandLink action="{!getChecked}" styleClass="button" rerender=""><span> Download Selected</span></apex:commandLink>
+                            <apex:commandLink action="{!pdfDownloadAll}" styleClass="button" rerender=""><span>Donwload All</span></apex:commandLink>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </td>
+                </tr>
+            </table>
+        </apex:pageBlock> 
+        <!-- follow me template -->
+        <div class="made-with-love">
+            Made with 
+            <i>♥</i> by
+            <a target="_blank" href="http://login.salesforce.com">SFDC Team</a>
+        </div>
+    </apex:form>
+</apex:page>
