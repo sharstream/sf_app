@@ -10,3 +10,5 @@ Setup:
   1. Apache Ant build configuration
   2. GitHub Setting
   3. Connected App 
+
+[![Throughput Graph](https://graphs.waffle.io/sharstream/sf_app/throughput.svg)](https://waffle.io/sharstream/sf_app/metrics/throughput)
