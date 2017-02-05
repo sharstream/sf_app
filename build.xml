@@ -28,21 +28,59 @@
     <!--Git and Ant Force.com migration Configuration-->
     <macrodef name="git">
     <attribute name="dir" default="/Users/davidperez/Documents/applications/sfdc_app" />
-    <attribute name="branch" default="master" />
+    <attribute name="branch" default="https://github.com/sharstream/sf_app.git" />
+    <attribute name="command" />
+    <attribute name="failerror" default="false" />
+    <element name="args" optional="true" />
     <sequential>
-      <exec executable="git" dir="@{dir}">
-          <arg value="pull" />
+      <echo message="git dir sfdc_app" />
+      <echo message="git pull" />
+      <exec executable="git" dir="/Users/davidperez/Documents/applications/sfdc_app">
+          <arg line="pull" />
+          <arg value="push" />
           <arg value="origin" />
-          <arg value="@{branch}" />
+          <arg value="master" />
+      </exec>
+      <exec executable="git" dir="@{dir}">
+        <arg line="@{command} @{options}" />
+        <args />
       </exec>
     </sequential>
     </macrodef>
 
     <target name="checkoutFromGit">
-      <echo>Issuing git pull from directory: ${git.dir}</echo>
-      <echo>Pulling from branch: ${git.branch}</echo>
+      <echo>Issuing git pull from directory: sfdc_app</echo>
+      <echo>Pulling from branch: master</echo>
       <git dir="/Users/davidperez/Documents/applications/sfdc_app" branch="master" />
     </target>
+
+    <target name="version" description="Commits all changes to version git">
+      <input message="Commit message" addproperty="commit-message" />     
+      <echo message="Commiting all changes with message ${commit-message}" />
+      <git command="add">
+        <args>
+          <arg value="." />
+        </args>
+      </git>
+      <git command="commit">
+        <args>
+          <arg value="-am ${commit-message}" />
+        </args>
+      </git>
+      <git command="push" />
+    </target>
+
+    <!-- deploying Git and ant TrailBlazer sandbox -->
+    <target name="sfdc_appRetrieve">   
+    <mkdir dir="retrievePkgs"/>
+    <sf:retrieve 
+      username="${sf.trailblazer.username}"
+      password="${sf.trailblazer.password}"
+      serverurl="${sf.prod.serverurl}"
+      retrieveTarget="retrievePkgs"
+      unpackaged="pkgs/package_deploy.xml"/>
+    </target>
+
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target 
       name="retrieveMetadata">
@@ -160,20 +198,6 @@
       password="${sf.password}"
       serverurl="${sf.serverurl}"
       zipFile="${sf.zipFile}"
-      autoUpdatePackage="true"
-      checkOnly="false"
-      rollbackOnError="true"/>
-    </target>
-
-    <!-- Zip TrailBlazer sandbox -->
-    <target name="sfdc_appDeploy">
-    <mkdir dir="deployPkgs"/>
-    <sf:deploy 
-      username="${sf.trailblazer.username}"
-      password="${sf.trailblazer.password}"
-      serverurl="${sf.prod.serverurl}"
-      retrieveTarget="pkgs"
-      deployRoot="src"
       autoUpdatePackage="true"
       checkOnly="false"
       rollbackOnError="true"/>
