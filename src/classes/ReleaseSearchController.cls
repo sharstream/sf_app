@@ -38,11 +38,20 @@ public with sharing class ReleaseSearchController {
 	Transient String connectSelectionVersion{get; set;}
 	Transient String connectedSelectionComponent{get; set;}
 	Transient String connectSelectionBacklog{get; set;}
+	// mapping release notes by each element release
+	Map<V1_NoteSelectionItems, prodTableWrapper> productMaprelease;
+	Map<V1_NoteSelectionItems, versionTableWrapper> versionMaprelease;
+	Map<V1_NoteSelectionItems, componentTableWrapper> componentMaprelease;
+	Map<V1_NoteSelectionItems, backlogTableWrapper> backlogMaprelease;
 	//public Map<String,Set<versionTableWrapper>> wrapMapVerDefaults{get; set;}
 	
 	// init the controller and display some sample datas when the page loads
     public ReleaseSearchController() {
 
+    	backlogMaprelease = new Map<V1_NoteSelectionItems, backlogTableWrapper>();
+    	componentMaprelease = new Map<V1_NoteSelectionItems, componentTableWrapper>();
+    	versionMaprelease = new Map<V1_NoteSelectionItems, versionTableWrapper>();
+    	productMaprelease = new Map<V1_NoteSelectionItems, prodTableWrapper>();
     	this.noteItemsForPDF = new List<String>();
     	beforeWrapproducts = new list<prodTableWrapper>();
     	afterWrapproducts = new list<prodTableWrapper>();
@@ -111,9 +120,12 @@ public with sharing class ReleaseSearchController {
 		}
 	}
 	public void populateTableProduct(){
-
+		// mapping release notes by each product release
 		for(V1_NoteSelectionItems note : selectionItemsListing.DisplayListing)
 			beforeWrapproducts.add(new prodTableWrapper(note));
+		for (prodTableWrapper prodToMap : beforeWrapproducts) {
+			productMaprelease.put(prodToMap.product, prodToMap);
+		}
 	}
 	//AT-128068 selecting a product in the Search by Product
 	//AT-128069 selecting another product

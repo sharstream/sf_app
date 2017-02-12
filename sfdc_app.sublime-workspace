@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"trailblaz",
+				"trailblazer"
+			],
+			[
+				"trailblazer",
+				"trailblazer"
+			],
+			[
+				"retrieve",
+				"retrievePkgs"
+			],
+			[
+				"depoy",
+				"deployPkgs"
+			],
+			[
+				"retrie",
+				"retrieveTarget"
+			],
+			[
+				"sfdc_app",
+				"sfdc_app"
+			],
+			[
+				"deploy",
+				"deployPkgs"
+			],
+			[
+				"Custom",
+				"CustomLabels\tMetadata Type"
+			],
+			[
 				"retreive",
 				"retrieveTarget"
 			],
@@ -88,27 +120,118 @@
 	"buffers":
 	[
 		{
-			"file": "build.xml",
+			"file": "build.properties",
 			"settings":
 			{
-				"buffer_size": 12469,
+				"buffer_size": 1949,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "build.properties",
+			"file": "build.xml",
 			"settings":
 			{
-				"buffer_size": 1805,
+				"buffer_size": 15786,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "pkgs/package.xml",
+			"file": "/Users/davidperez/Library/Application Support/Sublime Text 3/Packages/User/toolingapi.sublime-settings",
 			"settings":
 			{
-				"buffer_size": 909,
+				"buffer_size": 3830,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/ReleaseSearchController.cls",
+			"settings":
+			{
+				"buffer_size": 19732,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pages/ReleaseDynoQuery.page",
+			"settings":
+			{
+				"buffer_size": 13605,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/V1_NoteSelectionItems.cls-meta.xml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/V1_RN_NoteSelectionItemsListing.cls",
+			"settings":
+			{
+				"buffer_size": 18320,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/ReleaseSearchControllerTest.cls-meta.xml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/ReleaseSearchController.cls-meta.xml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/V1Exception.cls-meta.xml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/V1HttpErrorResponse.cls-meta.xml",
+			"settings":
+			{
+				"buffer_size": 174,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/ReleaseSearchControllerTest.cls",
+			"settings":
+			{
+				"buffer_size": 13817,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/objects/V1_Release_Notes_Table_Content__c.object",
+			"settings":
+			{
+				"buffer_size": 7306,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -121,16 +244,28 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 107.0,
-		"last_filter": "install",
+		"height": 87.0,
+		"last_filter": "Package Control: instal",
 		"selected_items":
 		[
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 485.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -150,11 +285,26 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/davidperez/Documents/applications/trailblazer/src/flowDefinitions",
-		"/Users/davidperez/Documents/applications/sfdc_app"
+		"/Users/davidperez/Documents/applications/sfdc_app",
+		"/Users/davidperez/Documents/applications/sfdc_app/release",
+		"/Users/davidperez/Documents/applications/sfdc_app/src",
+		"/Users/davidperez/Documents/applications/sfdc_app/src/classes",
+		"/Users/davidperez/Documents/applications/sfdc_app/src/staticresources",
+		"/Users/davidperez/Documents/applications/sfdc_app_in_Prelim",
+		"/Users/davidperez/Documents/applications/sfdc_app_in_Prelim/src",
+		"/Users/davidperez/Documents/applications/sfdc_app_in_Prelim/src/classes"
 	],
 	"file_history":
 	[
+		"/Users/davidperez/Documents/applications/sfdc_app_in_Prelim/src/classes/SupportOrder_AutoCloneBatch.cls",
+		"/Users/davidperez/Documents/applications/sfdc_app/src/staticresources/release.resource-meta.xml",
+		"/Users/davidperez/Documents/applications/sfdc_app/src/staticresources/jquery1814.resource",
+		"/Users/davidperez/Documents/applications/sfdc_app/release/package.xml",
+		"/Users/davidperez/Documents/applications/sfdc_app/src/classes/SOW_Summary_Project_Controller.cls",
+		"/Users/davidperez/Documents/applications/sfdc_app/deployPkgs/package.xml",
+		"/Users/davidperez/Documents/applications/sfdc_app/pkgs/package_deploy.xml",
+		"/Users/davidperez/Documents/applications/sfdc_app/pkgs/package.xml",
+		"/Users/davidperez/Documents/applications/sfdc_app/sfdc_app.sublime-project",
 		"/Users/davidperez/Documents/applications/trailblazer/build.xml",
 		"/Users/davidperez/Library/Application Support/Sublime Text 3/Packages/User/toolingapi.sublime-settings",
 		"/Users/davidperez/Documents/applications/sfdc_app/src/package.xml",
@@ -208,6 +358,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"com",
 			"selectedDisplayItems",
 			"tempListing",
 			"toggleSort",
@@ -234,19 +385,47 @@
 			[
 				{
 					"buffer": 0,
-					"file": "build.xml",
+					"file": "build.properties",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12469,
+						"buffer_size": 1949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								912,
-								912
+								817,
+								817
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/JavaProperties.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "build.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8405,
+								8405
 							]
 						],
 						"settings":
@@ -256,19 +435,48 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3027.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/davidperez/Library/Application Support/Sublime Text 3/Packages/User/toolingapi.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2960,
+								2960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 913.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "build.properties",
+					"buffer": 3,
+					"file": "src/classes/ReleaseSearchController.cls",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1805,
+						"buffer_size": 19732,
 						"regions":
 						{
 						},
@@ -281,390 +489,271 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Java/JavaProperties.sublime-syntax"
+							"syntax": "Packages/Java/Java.sublime-syntax"
 						},
-						"translation.x": 0.0,
+						"translation.x": 13.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "pkgs/package.xml",
+					"buffer": 4,
+					"file": "src/pages/ReleaseDynoQuery.page",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 909,
+						"buffer_size": 13605,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								870,
-								870
+								644,
+								703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/classes/V1_NoteSelectionItems.cls-meta.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/classes/V1_RN_NoteSelectionItemsListing.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18320,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1967,
+								1967
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3171.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/classes/ReleaseSearchControllerTest.cls-meta.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/classes/ReleaseSearchController.cls-meta.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/classes/V1Exception.cls-meta.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/classes/V1HttpErrorResponse.cls-meta.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/classes/ReleaseSearchControllerTest.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13817,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/objects/V1_Release_Notes_Table_Content__c.object",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/XML/XML.sublime-syntax",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"types":
-							{
-								"ApexClass":
-								[
-									"*"
-								],
-								"ApexComponent":
-								[
-									"*"
-								],
-								"ApexPage":
-								[
-									"*"
-								],
-								"ApexTrigger":
-								[
-									"*"
-								],
-								"ApprovalProcess":
-								[
-									"*"
-								],
-								"AssignmentRules":
-								[
-									"*"
-								],
-								"AuraDefinitionBundle":
-								[
-									"*"
-								],
-								"Certificate":
-								[
-									"*"
-								],
-								"CustomApplication":
-								[
-									"*"
-								],
-								"CustomApplicationComponent":
-								[
-									"*"
-								],
-								"CustomMetadata":
-								[
-									"*"
-								],
-								"CustomObject":
-								[
-									"Account",
-									"AccountCleanInfo",
-									"AccountContactRole",
-									"Activity",
-									"Apttus_Approval__ApprovalProcessInstance__c",
-									"Apttus_Approval__ApprovalRuleAssignee__c",
-									"Apttus_Approval__ApprovalRuleDimension__c",
-									"Apttus_Approval__ApprovalRuleEntry__c",
-									"Apttus_Approval__ApprovalRule__c",
-									"Apttus_Approval__Approval_Matrix__c",
-									"Apttus_Approval__Approval_Process__c",
-									"Apttus_Approval__Approval_Request_History__c",
-									"Apttus_Approval__Approval_Request__c",
-									"Apttus_Approval__ApprovalsCustomConfig__c",
-									"Apttus_Approval__ApprovalsSystemProperties__c",
-									"Apttus_Approval__Backup_Approver__c",
-									"Apttus_Approval__FormulaField__c",
-									"Apttus_Approval__Global_Discount_Policy__c",
-									"Apttus_Approval__SearchFilter__c",
-									"Apttus_Approval__Term_Exception_Approval_Condition__c",
-									"Apttus_Approval__Term_Exception_Approval__c",
-									"Apttus_DocGen__DocGenSystemProperties__c",
-									"Apttus_DocuApi__DocuSignCalloutTransient__c",
-									"Apttus_DocuApi__DocuSignCustomClasses__c",
-									"Apttus_DocuApi__DocuSignDefaultRecipient2__c",
-									"Apttus_DocuApi__DocuSignDefaultRecipient__c",
-									"Apttus_DocuApi__DocuSignEnvelopeRecipientStatus__c",
-									"Apttus_DocuApi__DocuSignEnvelope__c",
-									"Apttus_DocuApi__DocuSignSigningGroupMembers__c",
-									"Apttus_DocuApi__DocuSignSigningGroup__c",
-									"Apttus_DocuApi__DocuSignSystemProperties__c",
-									"Apttus_DocuApi__DocuSignTemplate__c",
-									"Apttus_DocuApi__DocuSignUser__c",
-									"Apttus__APTS_Admin__c",
-									"Apttus__APTS_Agreement__c",
-									"Apttus__APTS_Related_Agreement__c",
-									"Apttus__APTS_Template__c",
-									"Apttus__AccountHierarchy__c",
-									"Apttus__AgreementActionCondition__c",
-									"Apttus__AgreementExplorer__c",
-									"Apttus__AgreementHierarchy__c",
-									"Apttus__AgreementLineItem__c",
-									"Apttus__AgreementLock__c",
-									"Apttus__Agreement_Clause__c",
-									"Apttus__Agreement_Document__c",
-									"Apttus__Agreement_Protection__c",
-									"Apttus__Agreement_Rule_Condition__c",
-									"Apttus__Agreement_Rule__c",
-									"Apttus__Agreement_Term_Exception__c",
-									"Apttus__AsyncMergeCall__c",
-									"Apttus__ComplyCustomClasses__c",
-									"Apttus__ComplyCustomProperties__c",
-									"Apttus__ComplySystemProperties__c",
-									"Apttus__ContentEvent__c",
-									"Apttus__CycleTimeFieldData__c",
-									"Apttus__CycleTimeField__c",
-									"Apttus__CycleTimeGroupData__c",
-									"Apttus__CycleTimeGroup__c",
-									"Apttus__DocAssemblyComponent__c",
-									"Apttus__DocAssemblyRule__c",
-									"Apttus__DocAssemblyRuleset__c",
-									"Apttus__DocumentAgreementClause__c",
-									"Apttus__DocumentVersionDetail__c",
-									"Apttus__DocumentVersion__c",
-									"Apttus__Document_Output_Format__c",
-									"Apttus__FormulaField__c",
-									"Apttus__MergeEventDetail__c",
-									"Apttus__MergeEvent__c",
-									"Apttus__QueryTemplateFilter__c",
-									"Apttus__QueryTemplateQualifier__c",
-									"Apttus__QueryTemplate__c",
-									"Apttus__RetentionPolicy__c",
-									"Apttus__SearchFilter__c",
-									"Apttus__TempObject__c",
-									"Apttus__TemplateClauseReferenceVersion__c",
-									"Apttus__TemplateClauseReference__c",
-									"Apttus__TemplateDatasourceFilter__c",
-									"Apttus__TemplateDynamicSectionVersion__c",
-									"Apttus__TemplateDynamicSection__c",
-									"Apttus__TemplateVersion__c",
-									"Apttus__Term_Exception__c",
-									"Apttus__Wizard2__c",
-									"Apttus__WizardDesign__c",
-									"Apttus__WizardInputControl2__c",
-									"Apttus__WizardInputControlRuntime__c",
-									"Apttus__WizardInputControl__c",
-									"Apttus__WizardInputGroup__c",
-									"Apttus__WizardRule2__c",
-									"Apttus__WizardRule__c",
-									"Apttus__WizardRuleset2__c",
-									"Apttus__WizardRulesetRuntime__c",
-									"Apttus__WizardRuleset__c",
-									"Apttus__WizardRuntimeInput__c",
-									"Apttus__WizardRuntime__c",
-									"Apttus__WizardStep2__c",
-									"Apttus__WizardStepRuntime__c",
-									"Apttus__WizardStep__c",
-									"Apttus__Wizard__c",
-									"Asset",
-									"AssistantProgress",
-									"Campaign",
-									"CampaignMember",
-									"Candidate__c",
-									"Case",
-									"CaseContactRole",
-									"Contact",
-									"ContactCleanInfo",
-									"ContentVersion",
-									"Contract",
-									"ContractContactRole",
-									"DandBCompany",
-									"DuplicateRecordItem",
-									"DuplicateRecordSet",
-									"EmailMessage",
-									"Event",
-									"ExchangeUserMapping",
-									"FeedItem",
-									"ForecastingCategoryMapping",
-									"Idea",
-									"Lead",
-									"LeadCleanInfo",
-									"Macro",
-									"MacroAction",
-									"MacroInstruction",
-									"Opportunity",
-									"OpportunityCompetitor",
-									"OpportunityContactRole",
-									"OpportunityLineItem",
-									"Order",
-									"OrderItem",
-									"PartnerRole",
-									"Pricebook2",
-									"PricebookEntry",
-									"Product2",
-									"Project__c",
-									"ServiceCredentials__c",
-									"ServiceTokens__c",
-									"Site",
-									"SocialPersona",
-									"Solution",
-									"StreamingChannel",
-									"Task",
-									"Trail__c",
-									"User",
-									"UserProvisioningRequest",
-									"Waypoint__c"
-								],
-								"CustomPageWebLink":
-								[
-									"*"
-								],
-								"CustomPermission":
-								[
-									"*"
-								],
-								"CustomTab":
-								[
-									"*"
-								],
-								"EmailTemplate":
-								[
-									"Apttus_Approval__Visualforce_Email_Templates",
-									"Apttus__ApttusEmailTemplates",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApprovaRequestDelegationNotification",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApprovalRequestAutoApproved",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApprovalRequestAutoCancelled",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApprovalRequestEscalationReminder",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__Approval_Request_Comments_Entered",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__Approval_Request_Comments_Entered2",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__Approval_Request_Reassignment_Notification",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtLItemApprovalAssignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtLItemApprovalCancelEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtLItemApprovalEscalationEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtLItemApprovalNotifyOnlyEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtLItemApprovalReassignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtTermExApprovalAssignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtTermExApprovalCancelEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtTermExApprovalEscalationEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtTermExApprovalNotifyOnlyEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgmtTermExApprovalReassignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgreementApprovalAssignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgreementApprovalCancelEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgreementApprovalEscalationEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgreementApprovalNotifyOnlyEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusAgreementApprovalReassignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusMyApprovalsAssignment",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusMyApprovalsCancellation",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusMyApprovalsEscalation",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusMyApprovalsNotifyOnly",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusMyApprovalsReassignment",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusOpptyApprovalAssignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusOpptyApprovalCancelEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusOpptyApprovalEscalationEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusOpptyApprovalNotifyOnlyEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__ApttusOpptyApprovalReassignEmail",
-									"Apttus__ApttusEmailTemplates/Apttus_Approval__DelegateUserNotification",
-									"Apttus__ApttusEmailTemplates/Apttus__Agreement_Review_Notification",
-									"Apttus__ApttusEmailTemplates/Apttus__Agreement_Review_Notification_Auto",
-									"Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice",
-									"Apttus__ApttusEmailTemplates/Apttus__ApttusEmailTemplateForReviewSignatures",
-									"Apttus__ApttusTempEmailTemplates",
-									"unfiled$public",
-									"unfiled$public/MarketingProductInquiryResponse",
-									"unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE",
-									"unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE",
-									"unfiled$public/SUPPORTSelfServiceResetPasswordSAMPLE",
-									"unfiled$public/SalesNewCustomerEmail",
-									"unfiled$public/SupportCaseAssignmentNotification",
-									"unfiled$public/SupportCaseCreatedPhoneInquiries",
-									"unfiled$public/SupportCaseCreatedWebInquiries",
-									"unfiled$public/SupportCaseResponse",
-									"unfiled$public/SupportEscalatedCaseNotification",
-									"unfiled$public/SupportEscalatedCaseReassignment",
-									"unfiled$public/SupportSelfServiceNewLoginandPassword",
-									"unfiled$public/SupportSelfServiceResetPassword"
-								],
-								"Flow":
-								[
-									"*"
-								],
-								"FlowDefinition":
-								[
-									"*"
-								],
-								"GlobalPicklist":
-								[
-									"*"
-								],
-								"HomePageComponent":
-								[
-									"*"
-								],
-								"HomePageLayout":
-								[
-									"*"
-								],
-								"Layout":
-								[
-									"*"
-								],
-								"Letterhead":
-								[
-									"*"
-								],
-								"PermissionSet":
-								[
-									"*"
-								],
-								"Queue":
-								[
-									"*"
-								],
-								"Report":
-								[
-									"Apttus__AgreementReports",
-									"Apttus__AgreementReports/Apttus__AgreementExpirationThisQuarter",
-									"Apttus__AgreementReports/Apttus__AgreementExpirationThisYear",
-									"Apttus__AgreementReports/Apttus__AgreementSearch",
-									"Apttus__AgreementReports/Apttus__AgreementValueReport",
-									"Apttus__AgreementReports/Apttus__AgreementValuebyType",
-									"Apttus__AgreementReports/Apttus__AgreementsByStage",
-									"Apttus__AgreementReports/Apttus__AgreementsbyAccount",
-									"Apttus__AgreementReports/Apttus__AgreementsofHighValuedueRenewal",
-									"Apttus__AgreementReports/Apttus__AgreementswithNonStandardTerms",
-									"Apttus__AgreementReports/Apttus__ContractActivityReport",
-									"Apttus__AgreementReports/Apttus__ContractsExpiringThisYearbyValue",
-									"Apttus__AgreementReports/Apttus__ContractswithNonStandardLanguage",
-									"Apttus__AgreementReports/Apttus__HighRiskContracts",
-									"unfiled$public"
-								],
-								"ReportType":
-								[
-									"*"
-								],
-								"SamlSsoConfig":
-								[
-									"*"
-								],
-								"Scontrol":
-								[
-									"*"
-								],
-								"SharingRules":
-								[
-									"*"
-								],
-								"SiteDotCom":
-								[
-									"*"
-								],
-								"StaticResource":
-								[
-									"*"
-								],
-								"Workflow":
-								[
-									"*"
-								]
-							}
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -715,9 +804,9 @@
 	},
 	"output.log":
 	{
-		"height": 100.0
+		"height": 187.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/Java/Ant.sublime-build",
 	"project": "sfdc_app.sublime-project",
 	"replace":
 	{

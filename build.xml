@@ -237,12 +237,34 @@ limitations under the License.
     <target 
       name="retrieveChangeSet">    
     <sf:retrieve 
-      username="${sf.prelim.username}"
-      password="${sf.prelim.password}"
-      serverurl="${sf.serverurl}"
+      username="${sf.prod.username}"
+      password="${sf.prod.password}"
+      serverurl="${sf.prod.serverurl}"
       retrieveTarget="src"
-      packageNames="Deal Approval Process Field Update clmdryrun"/>
+      packageNames="Page Layout updates to CLMDryRun 5 Feb 2017"/>
     </target> 
+
+    <target 
+      name="retrieveReleaseNotes">   
+    <mkdir dir="release" /> 
+    <sf:retrieve 
+      username="${sf.v1dev.username}"
+      password="${sf.v1dev.password}"
+      serverurl="${sf.serverurl}"
+      retrieveTarget="release"
+      packageNames="V1 Release Notes change set"/>
+    </target> 
+
+    <target name="devDeployRelease">
+      <sf:deploy 
+        username="${sf.trailblazer.username}"
+        password="${sf.trailblazer.password}"
+        serverurl="${sf.prod.serverurl}"
+        deployRoot="release"
+        autoUpdatePackage="true"
+        checkOnly="false"
+        rollbackOnError="true"/>
+    </target>
 
     <!-- Retrieve an unpackaged set of metadata from your org -->
     <!-- The file unpackaged/package.xml lists what is to be retrieved -->

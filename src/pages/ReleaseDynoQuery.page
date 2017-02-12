@@ -1,6 +1,6 @@
 <apex:page controller="ReleaseSearchController" standardStylesheets="true" sidebar="false" docType="html-5.0" applyHtmlTag="false" applyBodyTag="false" showHeader="false">
     <apex:stylesheet value="{!$Resource.release}" />
-    <apex:includeScript value="{!$Resource.approvals_jQuery_2_0_2}"/>
+    <apex:includeScript value="{!$Resource.jquery1814}"/>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
     <script type="text/javascript">
             function selectAllCheckboxes(obj,receivedInputID){

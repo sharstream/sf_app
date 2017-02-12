@@ -5,7 +5,10 @@
 			"path": "/Users/davidperez/Documents/applications/trailblazer"
 		},
 		{
-			"path": "/Users/davidperez/Documents/applications/sfdc_app"
+			"path": "."
+		},
+		{
+			"path": "/Users/davidperez/Documents/applications/sfdc_app_in_Prelim"
 		}
 	]
 }
