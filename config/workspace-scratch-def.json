@@ -1,0 +1,10 @@
+{
+  "Company": "Kitsune",
+  "Country": "US",
+  "LastName": "Perez",
+  "Email": "david.perez@us.abb.com",
+  "Edition": "Developer",
+  "OrgPreferences" : {
+    "S1DesktopEnabled" : true
+  }
+}
