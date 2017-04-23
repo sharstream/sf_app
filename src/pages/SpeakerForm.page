@@ -1,0 +1,14 @@
+<apex:page standardController="Speaker__c">
+<apex:form >
+    <apex:pageBlock title="Edit Speaker">
+        <apex:pageBlockSection columns="1">
+            <apex:inputField value="{!Speaker__c.First_Name__c}"/>
+            <apex:inputField value="{!Speaker__c.Last_Name__c}"/>
+            <apex:inputField value="{!Speaker__c.Email__c}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

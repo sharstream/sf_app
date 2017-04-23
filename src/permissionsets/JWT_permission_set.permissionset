@@ -136,7 +136,6 @@
         <apexClass>V1_RN_NoteSelectionItemsListing</apexClass>
         <enabled>false</enabled>
     </classAccesses>
-    <description>Permission Set generated for access to custom object Waypoint for the app Trailblazer</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AccountNumber</field>
@@ -4412,16 +4411,7 @@
         <field>User.agf__Work_User_Interface__c</field>
         <readable>false</readable>
     </fieldPermissions>
-    <label>Trailblazer Developer</label>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Waypoint__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
+    <label>JWT sfdx access</label>
     <pageAccesses>
         <apexPage>Job_Candidate_Help</apexPage>
         <enabled>false</enabled>

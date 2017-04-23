@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Security tokens for external services</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>token__c</fullName>
+        <description>Security token for the external service</description>
+        <externalId>false</externalId>
+        <label>token</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>ServiceTokens</label>
+    <visibility>Protected</visibility>
+</CustomObject>
