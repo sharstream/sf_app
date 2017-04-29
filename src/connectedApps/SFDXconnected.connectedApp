@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>daverioverde@gmail.com</contactEmail>
+    <label>SFDXconnected</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDfjCCAmYCCQCxqCEjQeaFETANBgkqhkiG9w0BAQsFADCBgDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkdBMRAwDgYDVQQHDAdBdGxhbnRhMQwwCgYDVQQKDANBQkIxDTALBgNVBAsMBFBHR0ExFDASBgNVBAMMC0RhdmlkIFBlcmV6MR8wHQYJKoZIhvcNAQkBFhBQZXJpbWV0ZXIgQ2VudGVyMB4XDTE3MDQxNzEzNTc1NFoXDTE4MDQxNzEzNTc1NFowgYAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJHQTEQMA4GA1UEBwwHQXRsYW50YTEMMAoGA1UECgwDQUJCMQ0wCwYDVQQLDARQR0dBMRQwEgYDVQQDDAtEYXZpZCBQZXJlejEfMB0GCSqGSIb3DQEJARYQUGVyaW1ldGVyIENlbnRlcjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKjBcrUEwhE6aJisJ7DINK1359oHhc0+PhhfGDzjhvRK5wtIa5+xT0jxRBdKcg+6aJPOqsllVZOLITJ807yEaFC4yjwAlEkTVghoKjyZUEsfnnB4xFzRbKuAL5Fr9PILQYTpetga9VY0y9I+uwe9uD0pUyzFsRV/FoDHc+vLyjFHoeysbvwl4IknQlUl8ux+VwTi9vcHeHFEO/IaVPJn0YH97MfYzFkQxtpPh5alD+JknjtJPfeQJJNo2PmsSzCQPujPtF8QfluipUM+fDgNlI/jdsdO9KmTm8GUwtZN3WT4uyUM67PZttCe7n/GrJczTrV022qQX5YYZ4TgrXWghyECAwEAATANBgkqhkiG9w0BAQsFAAOCAQEACmidkQ4XEIkKzs2Da3NhOl/OyMIIFAexRzBOUxNOH69GrPDrvlUDwX67F6IaYOEhWnaeH3V5MnztY6XTaRGVsyMPmZkf1RShR6EmtxuJpOXACCEZYrnnPPWdoeLK87PHzNrhc5EWuuZUeIT0ieayynS7wt0iPs+w4bhR6LB4HVJT3saJd8WD3NRpk5vHgzR8c7K/guP70QvYYtnwJRBe0cIUnvI33PkLcEZpVJJ9fVbDFDD6RNPPgz9ht4DXtbBMuATb822Jmd+UFqOkZnftyX6y8IIEQAbRAulxLrK0QJOfLRc2YdJQ4+aIEIoAcK/gfK7zHsTRUx0wSoMBwjzlaQ==</certificate>
+        <consumerKey>3MVG9szVa2RxsqBZ0Wu_KQoOg0.IwYGHGnDsI347.JoK5o90v6DBF3iarVNpI2KA3jmu7ySq.o_3QeDMYGM6T</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+</ConnectedApp>

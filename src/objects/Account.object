@@ -154,6 +154,17 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Customer_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Customer ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>DandbCompanyId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
@@ -309,6 +320,29 @@
     <fields>
         <fullName>Jigsaw</fullName>
         <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>LTATW__LTATW_selectedAddress__c</fullName>
+        <deprecated>false</deprecated>
+        <description>we use synonymy on the account, to align with the contact processes
+MAILING=SHIPPING
+OTHER=BILLING</description>
+        <externalId>false</externalId>
+        <label>LTATW selectedAddress</label>
+        <picklist>
+            <picklistValues>
+                <fullName>MAILING</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>NaicsCode</fullName>

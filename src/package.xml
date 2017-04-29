@@ -34,6 +34,10 @@
     </types>
     <types>
         <members>*</members>
+        <name>ConnectedApp</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>CustomApplication</name>
     </types>
     <types>
@@ -283,6 +287,49 @@
         <name>HomePageLayout</name>
     </types>
     <types>
+        <members>Apttus</members>
+        <members>Apttus_DocGen</members>
+        <members>LTATW</members>
+        <members>agf</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <members>sf_com_apps</members>
+        <name>InstalledPackage</name>
+    </types>
+    <types>
         <members>*</members>
         <name>Layout</name>
     </types>
@@ -313,6 +360,28 @@
         <members>Apttus__AgreementReports/Apttus__ContractsExpiringThisYearbyValue</members>
         <members>Apttus__AgreementReports/Apttus__ContractswithNonStandardLanguage</members>
         <members>Apttus__AgreementReports/Apttus__HighRiskContracts</members>
+        <members>agf__Agile_Manger</members>
+        <members>agf__Agile_Manger/agf__Bugs_to_Verify</members>
+        <members>agf__Agile_Manger/agf__Number_of_bugs_in_progress</members>
+        <members>agf__Agile_Manger/agf__Number_of_closed</members>
+        <members>agf__Agile_Manger/agf__Number_of_closed_bugs</members>
+        <members>agf__Agile_Manger/agf__Number_of_in_progress_user_stories</members>
+        <members>agf__Agile_Manger/agf__Number_of_new_bugs</members>
+        <members>agf__Agile_Manger/agf__Number_of_new_user_stories</members>
+        <members>agf__Agile_Manger/agf__Open_P0_P2_Bugs</members>
+        <members>agf__Agile_Manger/agf__Open_bugs_by_Priority</members>
+        <members>agf__Agile_Manger/agf__Planned_vs_Actual_Task_Hours</members>
+        <members>agf__Agile_Manger/agf__Release_Burndown</members>
+        <members>agf__Agile_Manger/agf__Release_Burnup</members>
+        <members>agf__Agile_Manger/agf__Release_Progress_by_Theme</members>
+        <members>agf__Agile_Manger/agf__Sample_Epic_Work_progress</members>
+        <members>agf__Agile_Manger/agf__Stories_Assigned_Completed</members>
+        <members>agf__Agile_Manger/agf__Story_Points_Completed_Per_Sprint</members>
+        <members>agf__Agile_Manger/agf__Story_points_per_sprint</members>
+        <members>agf__Agile_Manger/agf__Team_Allocation</members>
+        <members>agf__Agile_Manger/agf__Team_stories_in_release_by_sprint</members>
+        <members>agf__Agile_Manger/agf__Team_stories_in_release_by_theme</members>
+        <members>agf__Agile_Manger/agf__Work_created_by_month</members>
         <members>unfiled$public</members>
         <name>Report</name>
     </types>
