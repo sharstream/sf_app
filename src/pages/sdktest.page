@@ -1,0 +1,142 @@
+<apex:page>
+	<apex:includeScript value="https://localhost:3001/javascripts/force.js"/>
+	<apex:includeScript value="https://localhost:3001/javascripts/test.js"/>
+	<apex:pageBlock title="Wave SDK Demo">
+		<apex:pageBlockSection columns="2">
+			<apex:pageBlockSectionItem>
+				<div id="dashboard_ctrl"/>
+				<div id="record_view"/>
+			</apex:pageBlockSectionItem>
+			<apex:pageBlockSectionItem>
+				<div id="dashboard"/>
+			</apex:pageBlockSectionItem>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	<script>
+	 force.oauth = {
+	 	access_token: '{!$Api.Session_ID}',
+	 	instance_url: '/'
+	 };
+	 var config = {
+	 	appId: '<%= appId %>',
+	 	useProxy: false
+	 };
+	 wave.init(config);
+
+	 $Lightning.use("c:loApp", function(){
+	 	$Lightning.createComponent("c:recordView",
+	 		{ },
+	 		"record_view",
+	 		function(cmp){
+	 			//do some stuff
+	 	});
+	 	$Lightning.createComponent("c:dashboardControl",
+	 		{ },
+	 		"dashboard_ctrl",
+	 		function(cmp){
+	 			//do some stuff
+	 	});
+	 });
+
+	 wave.getDashboard({id: '0FKB00000000sUJOAY'}, function(dashboard, err){
+	 	if (err) {
+	 		console.error('wave.getDashboard error: ', err);
+	 	} else {
+	 		dashboard.createComponent({
+	 			locator: { id: 'dashboard' },
+	 			width: '100%'
+	 		},
+	 		function(res, err){
+	 			if (err) {
+	 				console.error('dashboard.createComponent error: ', err);
+	 			} else {
+	 				setTimeout(function(){
+	 					dashboard.addHandler('selection', function(evt){
+	 						console.warn('visualforce selection handler: ', evt);
+	 					});
+	 					dashboard.addHandler('results', function(evt){
+	 						console.warn('visualforce results handler: ', evt);
+
+	 						var values = evt.values;
+	 						var keyIdx = 0;
+	 						for (var k in values.dims) {
+	 							if (values.dims[k].indexOf('id') >= 0) {
+	 								keyIdx = k;
+	 								break;
+	 							}
+	 						}
+
+	 						var recordId = null;
+	 						for (var k in values.values) {
+	 							recordId = values.values[k][keyIdx];
+	 							var evt = $A.getEvt("force:navigateToSObject");
+	 							evt.setParam('recordId', recordId);
+	 							evt.fire();
+	 						}
+	 					});
+	 					try{
+	 						$A.eventService.addHandler({ "event": "c:setChartType", "handler" : function(evt){
+	 							console.warn('setChartType handle: ', evt);
+	 							var type = evt.getParam("type");
+	 							console.warn("type ", type);
+	 							dashboard.setChartType(type);
+	 						}});
+	 					} catch (e){
+	 						console.warn('addHandle exception: ', e);
+	 					}
+	 				}, 6000);
+	 			}
+	 		});
+
+	 		var select = document.getDocumentById('widgets');
+	 		var option = null;
+	 		option = document.createElement('option');
+	 		option.setAttribute('value', '');
+	 		option.setAttribute('selected', 'selected');
+	 		option.innerHTML = 'Please choose...';
+	 		select.appendChild(option);
+	 		select.onchange = function(e){
+	 			var name = e.target.value;
+	 			var widget = dashboard.getWidget(name);
+	 			var typeSelect = document.getElementById('types');
+	 			typeSelect.innerHTML = '';
+	 			typeSelect.onchange = function(e){
+	 				var type = e.target.value;
+	 				dashboard = setChartType(name, type, function(res, err){
+	 					console.warn('setChartType returned: ', res, err);
+	 				});
+	 			}
+	 			var type = widget.getChartType();
+	 			widget.getChartTypes(function(types, err){
+	 				for (var i = 0; i < types.length; i++) {
+	 					option = document.createElement('option');
+	 					option.setAttribute('value', types[i]);
+	 					if(type === types[i]){
+	 						option.setAttribute('selected', 'selected');
+	 					}
+	 					option.innerHTML = types[i];
+	 					typeSelect.appendChild(option);
+	 				}
+	 			});
+	 		}
+	 		dashboard.getWidgets(function(widgets, err){
+	 			if (err) {
+	 				console.error('dashboard.getWidgets error: ', err);
+	 			} else{
+	 				var names = [];
+	 				for (var key in widgets) {
+	 					names.push(key);
+	 				}
+	 				names = names.sort();
+	 				for (var i = 0; i < names.length; i++) {
+	 					option = document.createElement('option');
+	 					option.setAttribute('value', names[i]);
+	 					option.innerHTML = names[i];
+	 					select.appendChild(option);
+	 				}
+	 			}
+	 		});
+	 	}
+	 });
+	</script>
+</apex:page>
