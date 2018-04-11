@@ -1,0 +1,187 @@
+<apex:page controller="AssetProduct_ManualCloneController" tabstyle="asset">
+<apex:form >
+	<style type="text/css">
+        .loadingmsg {
+            color: black;
+            background: #fff; 
+            padding: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+            margin-right: -25%;
+            margin-bottom: -25%;
+        }
+        .loadingover {
+            background: black;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+            filter: alpha(opacity=80);
+            -moz-opacity: 0.8;
+            -khtml-opacity: 0.8;
+            opacity: 0.8;
+        }  
+        .selectedDataRow{      
+            background-color: #ccffbb;         
+        }
+        .saveButton{
+     	 	display:none;
+     	}
+     	.saveMoreButton{
+     	 	display:none;
+     	}
+     	.cancelButton{
+     	 	display:none;
+     	}
+     	.made-with-love {
+          margin-top: 40px;
+          padding: 10px;
+          clear: left;
+          text-align: center;
+          font-size: 10px;
+          font-family: arial;
+          color: #000000;
+        }      
+
+        .input {
+        padding-top: 0;
+        width: 100%;
+        }
+        .table.detailList {
+            width: 50% !important;
+            text-align: center;
+            margin: 0 auto;
+        } 
+        .PopupBackground{
+            background-color: white;
+            opacity: 0.8;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 200%;
+            top: -100px;
+            left: 10px;
+            z-index: 9998;
+        }
+        .AssetPopupClone{
+            background-color: white;
+            border-width: 8px;
+            border-style: solid;
+            z-index: 9999;
+            left: 30%;
+            padding:10px;
+            position: absolute;
+            width: 350px;
+            margin-left: 75px;
+            top:300px;
+        }
+    </style>  
+    <script type="text/javascript">    
+     var previousrrow='';     
+     function show(rowVar){                 
+        var classname1=rowVar.className;
+        rowVar.className="selectedDataRow";
+        if(previousrrow==''){ 
+            previousrrow=rowVar;
+        }
+         else{  
+             if(previousrrow.innerHTML!=rowVar.innerHTML){      
+                 previousrrow.className=classname1; 
+                 previousrrow=rowVar;       
+             }
+         }
+        } 
+      function selectAllCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var i=0; i<inputCheckBox.length; i++){
+          if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+              inputCheckBox[i].checked = obj.checked;
+          }
+        }
+        }
+        function showPopUp(){
+            showToPopup();
+            document.getElementById('loadingover').style.display = 'none';
+        }
+    </script>
+    <apex:actionFunction name="showToPopup" action="{!showToPopup}" reRender="Output"/>
+		<apex:sectionHeader subTitle="Asset Selected Results ready to clone" Title="Product Version Edit"> </apex:sectionHeader> 
+        <apex:pageBlock mode="maindetail">
+    	<apex:pageBlockButtons >
+    		<apex:commandButton value="Save" action="{!Save}" onclick="showPopUp();return false;"/>				
+    		<apex:commandButton value="Previous Page" action="{!back}" onclick="showPopUp();return false;"/>
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>
+	    	</apex:pageBlockButtons>
+        <apex:pageMessages />
+        <apex:outputPanel id="Output">
+            <apex:outputPanel styleClass="PopupBackground" layout="black" rendered="{!showPopup}"> 
+                <apex:outputPanel styleClass="AssetPopupClone" layout="black" rendered="{!showPopup}">
+        <div id="loadingmsg"/>
+        <div id="loadingover">
+            <p align="center"
+            style='{font-family: "Arial", Helvetica,sans-serif; font-size: 20px;}'>
+                        <apex:image value="/img/loading.gif"/> &nbsp; Please wait ...
+            </p>
+        <div id='loadingover' style='display: none;'></div>
+        </div>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:outputPanel>
+		    <apex:pageBlockSection title="Mass Clone Details" columns="1">
+	        <apex:outputLabel > Change Current Asset Status To : </apex:outputLabel>
+	        <apex:selectList size="1" value="{!selectedOldStatus}">
+		          <apex:selectOptions value="{!Status}"/>
+	        </apex:selectList>
+
+            <apex:outputLabel > Change New Asset Status To : </apex:outputLabel>
+            <apex:selectList size="1" value="{!selectedNewStatus}">
+		          <apex:selectOptions value="{!Status}"/>
+		        </apex:selectList>
+            
+		    </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="You Selected" columns="1" >
+            <apex:outputPanel layout="block" style="overflow:scroll;width:100%;height:545px" >
+                <apex:pageBlockTable value="{!selectedWrapperList}" var="asset" onRowClick="show(this);" >
+                    <apex:column style="width:3%" >
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!asset.selected}" id="inputId"/>
+                    </apex:column>
+                    <apex:column headerValue="Asset Name" value="{!asset.asset.Name}" />
+                    <apex:column headerValue="Product Name" value="{!asset.asset.Product2.Name}" />
+                    <apex:column headerValue="Current Status" value="{!asset.asset.Status}" />
+                    <apex:column headerValue="Current Version" value="{!asset.asset.Product_Version_2__c}" />            
+                <apex:column headerValue="Cloned Versions">
+                        <apex:selectList id="Positions" value="{!asset.version}" size="1"> <!--more than one element by id-->
+                            <apex:selectOptions value="{!asset.selecteVersions}"/>
+                        </apex:selectList>
+                    </apex:column>
+                    <!--apex:column headerValue="New Status"> 
+                        <apex:outputField value="{!asset.asset.Status}">
+                            <apex:inlineEditSupport hideOnEdit="saveButton, cancelButton" event="ondblclick"/>
+                        </apex:outputField>       
+                    </apex:column-->           
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+            </apex:pageBlockSection> 
+
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{!Save}" value="Save" id="saveButton" styleclass="saveButton" style="display:none"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel" id="cancelButton" styleclass="cancelButton"/>
+            </apex:pageBlockButtons>   
+
+        </apex:pageBlock>
+        <div class="made-with-love">
+	        Made with 
+        <i>?</i> by
+	        <a target="_blank" href="http://login.salesforce.com">SFDC Team</a>
+	    </div>
+    </apex:form>
+</apex:page>
