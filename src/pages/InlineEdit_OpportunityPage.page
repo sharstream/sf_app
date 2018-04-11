@@ -1,0 +1,162 @@
+<apex:page controller="InlineEdit_Opportunity" tabStyle="opportunity">
+	
+ 	<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+    <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/js/jquery.tablesorter.min.js" />
+    <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/css/theme.blue.css" /> 
+    <!-- <script src="{!URLFOR($Resource.jquery_vfFloatingHeaders)}"></script> -->
+    <script src="{!URLFOR($Resource.StickHeader)}"></script>
+	<!-- <style type = "text/css">
+		.fewerMore { display: none;}
+        .leftAlign {text-align:left;}
+        .centerAlign {text-align:right;}
+        .tbl-content{
+          height:300px;
+          overflow-x:auto;
+          margin-top: 0px;
+          border: 1px solid rgba(255,255,255,0.3);
+        }
+        .made-with-love {
+          margin-top: 40px;
+          padding: 10px;
+          clear: left;
+          text-align: center;
+          font-size: 10px;
+          font-family: arial;
+          color: #000000;
+        }
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .floatingStyle {
+            position:relative;
+        }
+        .tableContainer {
+            height:545px;
+            width: 100%;
+            overflow: auto;
+        }
+        .floatingStyle {
+            position:relative;
+        }
+	</style> -->
+    
+	<script type="text/javascript">
+
+		$.noConflict();
+        jQuery(document).ready(function() {
+            stickHeader('recordsTable', 'headerClass');
+            stickHeader('anotherRecordsTable', 'anotherHeaderClass');
+        });
+
+      function selectAllCheckboxes(obj,receivedInputID){
+        var inputCheckBox = document.getElementsByTagName("input");
+        for(var i=0; i<inputCheckBox.length; i++){
+          if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+              inputCheckBox[i].checked = obj.checked;
+          }
+        }
+      }
+
+      function showPopUp(){
+    	 showToPopup();
+         document.getElementById('loadingover').style.display = 'none';
+	  }
+    </script>
+	<apex:form >
+        <apex:pageBlock title="My Renewal Opportunity List View" mode="inlineEdit">
+        	<apex:pageBlockButtons >
+                <apex:commandButton action="{!massSubmitOpportunities}" value="Save" id="saveButton" styleclass="saveButton"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel" id="cancelButton" styleclass="cancelButton"/>
+            </apex:pageBlockButtons>
+            <apex:pageMessages />
+            <apex:outputPanel id="Output">
+		      <apex:outputPanel styleClass="PopupBackground" layout="black" rendered="{!showPopup}">
+		          <apex:outputPanel styleClass="OpptyPopup" layout="black" rendered="{!showPopup}">
+		              <div id="loadingmsg"/>
+		              <div id="loadingover">
+		                  <p align="center"
+		                  style='{font-family: "Arial", Helvetica,sans-serif; font-size: 20px;}'>
+		                  <apex:image value="/img/loading.gif"/> &nbsp; Please wait ...
+		                  </p>
+		              <div id='loadingover' style='display: none;'></div>
+		              </div>
+		          </apex:outputPanel>
+		      </apex:outputPanel>
+		  	</apex:outputPanel>
+            <apex:pageBlockSection columns="1">
+            	<apex:outputPanel styleClass="tableContainer" layout="block" >
+	            	<apex:pageBlockTable id="recordsTable" value="{!opptyWrappers}" var="oppty" onRowClick="show(this);" rendered="{!NOT(ISNULL(opptyWrappers))}">
+	            		<apex:column style="width:3%" >
+				            <apex:facet name="header">
+			                  	<apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+				              	</apex:facet>
+				            <apex:inputCheckbox value="{!oppty.selected}" id="inputId"/>
+	            		</apex:column>
+						<apex:column headerValue="Owner Full Name" headerClass="headerClass">
+							<apex:actionRegion >
+			                	<apex:inputField value="{!oppty.oppty.OwnerId}">
+			                	</apex:inputField>
+			                </apex:actionRegion>
+		                </apex:column>
+				        <apex:column headerValue="Opportunity Name" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.Name}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Amount" headerClass="headerClass">
+		                   	<apex:outputText value="{!oppty.oppty.Amount}"/>
+		                </apex:column>
+		                <apex:column headerValue="Close Date" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.CloseDate}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Forecast Call" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.Forecast_Call__c}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Status" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.Status__c}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Steps to Close" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.Next_Steps__c}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Opportunity Description" headerClass="headerClass">
+	                     	<apex:actionRegion >
+			                   	<apex:outputField value="{!oppty.oppty.Opportunity_Description__c}">
+									<apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" resetFunction="resetInlineEdit"/>
+				                </apex:outputField>
+			                </apex:actionRegion>
+		                </apex:column>
+		                <apex:column headerValue="Account Name" headerClass="headerClass">
+			                <apex:outputField value="{!oppty.oppty.Account.Name}"/>
+		                </apex:column>
+	            	</apex:pageBlockTable>
+            	</apex:outputPanel>
+            </apex:pageBlockSection>
+       </apex:pageBlock>
+       <div class="made-with-love">
+            Made with
+        	<i>♥</i> by
+            <a target="_blank" href="http://login.salesforce.com">SFDC Team</a>
+    	</div>
+  	</apex:form>
+</apex:page>
