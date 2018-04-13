@@ -1,6 +1,6 @@
 SFDC Developer Environment Org
 
-[![Stories in Ready](https://badge.waffle.io/sharstream/sf_app.svg?label=ready&title=Ready)](http://waffle.io/sharstream/sf_app)
+[![Stories in Ready](https://badge.waffle.io/sharstream/sf_app.svg?label=ready&title=Ready)](http://waffle.io/sharstream/sf_app)[![Build Status](https://travis-ci.org/sharstream/sf_app.svg?branch=master)](https://travis-ci.org/sharstream/sf_app)
 
 Open Source CRM Customization
 
