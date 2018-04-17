@@ -1,0 +1,168 @@
+<apex:page standardController="Opportunity" extensions="Opp_CloneManual_ContactRoleAndPartner">
+    <apex:pageMessages /> 
+    <apex:form id="form1">
+        
+            <apex:sectionHeader subTitle="New Opportunity" Title="Opportunity Edit"> </apex:sectionHeader>          
+                <apex:pageBlock title="Opportunity Edit" mode="edit" id="thePageBlock">                 
+                    <apex:pageBlockButtons >
+                        <apex:commandButton action="{!redirect}" id="save" value="Save"  />    
+                        <apex:commandButton action="{!cancel}" value="Cancel"/>
+                    </apex:pageBlockButtons>
+                  
+                    <apex:pageblockSection Title="Information" id="theOppSection" columns="2" dir="LTR">                        
+                        <apex:inputField value="{!newOpp.Name}" required="true" label="Opportunity Name"/>
+                        <apex:inputField value="{!newOpp.RecordTypeId}" label="Opportunity Record Type"/>
+                        <!--  apex:selectList value="{!selectedvalue}" required="true" label="Opportunity Record Type" size="1">
+                            <apex:selectOptions value="{!items}"/>
+                        </apex:selectList><p/>-->
+                        <apex:outputField value="{!oldOpp.Name}" label="Cloned From Opportunity"/> 
+                        <apex:outputField value="{!newOpp.currencyISOCode}" label="Opportunity Currency" /> 
+                        <apex:inputField value="{!newOpp.AccountId}" required="true" label="Account Name"/> 
+                        <apex:inputField value="{!newOpp.Cancellation_Type__c}" label="Cancellation Type"/> 
+                        <apex:outputText />
+                        <apex:inputField value="{!newOpp.Parent_Opportunity__c}" label="Parent Opportunity"/> 
+                        <apex:outputText />
+                        <apex:inputField value="{!newOpp.CloseDate}" required="true" label="Close Date"/>                                                        
+                        <apex:inputfield value="{!newOpp.End_User__c}" label="End User"/>                       
+                        <apex:inputField value="{!newOpp.BU_Code__c}" required="true" label="PG Code"/>                     
+                        <!--  apex:inputfield value="{!oldOpp.OwnerId}" label="Opportunity Owner"/-->
+                        <div>
+                           <tr>
+                             <!--th>Opportunity Stage</th-->
+                             <td>
+                               <apex:actionRegion >
+                                <apex:outputLabel for="StageName" value="Stage" style="font-weight:bold"/>
+                                <apex:inputField value="{!newOpp.StageName}" label="Stage">
+                                  <apex:actionSupport event="onchange" action="{!changeStageName}"
+                                                      rerender="probability,messages" />
+                                </apex:inputField>
+                              </apex:actionRegion>
+                            </td>
+                          </tr>
+                        </div>
+                        <apex:inputField value="{!newOpp.Probability}" id="probability" />
+                        <apex:inputField value="{!newOpp.Type}" required="true" label="Type" />
+                        <apex:inputField value="{!newOpp.Verified__c}" label="Verified"/>
+                        <apex:inputField value="{!newOpp.Industry__c}" label="Industry"/>                       
+                        <apex:inputField value="{!newOpp.Finance_Verified__c}" label="Finance Verified" />
+                        <apex:inputField value="{!newOpp.Area__c}" required="true" label="Area"/>                                         
+                        <apex:inputField value="{!newOpp.Verified_Date__c}" label="Verified Date"/> 
+                        <apex:inputField value="{!newOpp.FES_Region__c}" required="true" label="FES Region"/>                                         
+                        <apex:inputField value="{!newOpp.Finance_Verified__c}" label="Finance Verified Date"/>
+                        <apex:inputField value="{!newOpp.Territory__c}" required="true" label="Territory"/>                  
+                        <apex:inputField value="{!newOpp.Locked_Record__c}" label="Locked Record"/>
+                        <apex:inputField value="{!newOpp.Opportunity_Country__c}" required="true" label="Opportunity Country"/>                     
+                        <apex:inputField value="{!newOpp.Contract_Entity__c}" label="Contract Entity"/>
+                        <apex:inputField value="{!newOpp.PSO_Region__c}" label="PSO Region"/>                       
+                        <apex:inputField value="{!newOpp.Non_Commission__c}" label="Non-Commission"/>
+                        <apex:inputField value="{!newOpp.Contract_Requested__c}" label="Contract Requested"/>                    
+                        <apex:inputField value="{!newOpp.Forecast_Call__c}" required="true" label="Forecast Call"/>
+                        <apex:inputField value="{!newOpp.Consulting_SOW_Requested__c}" label="SOW Requested"/> 
+                        <apex:inputField value="{!newOpp.BidType__c}" label="Bid Type" /> 
+                        <apex:inputField value="{!newOpp.IsAlreadyCloned__c}" label="Is Already Cloned"/>                        
+                        <apex:inputField value="{!newOpp.Regional_Forecast_Call__c}" required="true" label="Regional Forecast Call"/>      
+                        <apex:inputField value="{!newOpp.Contract_Request_Date__c}" label="Contract Request Date"/>                         
+                        <apex:inputField value="{!newOpp.Forecast__c}" label="Forecast"/>                                         
+                        <apex:inputField value="{!newOpp.Target_Opportunity__c}" label="Target Opportunity"/>
+                        <apex:inputField value="{!newOpp.Nuclear_Compliance__c}" label="Nuclear Compliance?"/>                      
+                        <apex:inputField value="{!newOpp.Budget__c}" label="Key Deal"/>
+                        <apex:inputField value="{!newOpp.SW_License_Compliance__c}" label="SW License Compliance?"/>                    
+                        <apex:inputField value="{!newOpp.Risk_Review_ID__c}" label="Risk Review ID"/>
+                        <apex:inputField value="{!newOpp.NC_SPIFF_Eligible__c}" label="NC SPIFF Eligible?"/>                    
+                        <apex:inputField value="{!newOpp.BU_Risk_Review_Date__c}" label="BU Risk Review Date"/>
+                        <apex:inputField value="{!newOpp.Won_Date__c}" label="Network Control Won Date"/>                    
+                        <apex:inputField value="{!newOpp.Div_Risk_Review_Date__c}" label="Div Risk Review Date"/>
+                        <apex:inputField value="{!newOpp.Network_Control_Lock__c}" label="Network Control Lock"/>
+                        <apex:inputField value="{!newOpp.To_be_Consolidated__c}" label="To be Consolidated"/>                                           
+                        <apex:inputField value="{!newOpp.Collections_Notes__c}" label="Collections Notes"/>
+                        <apex:inputField value="{!newOpp.Renewal_PO_Notice__c}" label="Renewal PO Notice"/>
+                        <apex:inputField value="{!newOpp.Renewal_Quote_Notice__c}" label="Renewal Quote Notice"/>
+                        <apex:inputField value="{!newOpp.Opportunity_Description__c}" label="Opportunity Description"/> 
+                        <apex:inputField value="{!newOpp.Status__c}" label="Status"/>
+                        <apex:inputField value="{!newOpp.Status_Date__c}" label="Status Date"/>
+                        <apex:inputField value="{!newOpp.Next_Steps__c}" label="Steps to Close"/>             
+                    </apex:pageblockSection>
+                    
+                    <apex:pageblockSection Title="Professional Services" id="theProfSection" columns="2" dir="LTR"> 
+                        <apex:inputField value="{!newOpp.Consulting_SOW_Request_Date__c}" label="SOW Request Date"/>
+                        <apex:inputField value="{!newOpp.PSO_Owner__c}" label="Consulting Owner"/>
+                        <apex:inputField value="{!newOpp.PSO_Program__c}" label="Consulting Program"/>
+                        <apex:inputField value="{!newOpp.Required_Action__c}" label="Required Action"/>
+                        <apex:inputField value="{!newOpp.PSO_Solution__c}" label="Consulting Solution"/>
+                        <apex:inputField value="{!newOpp.Required_Action_Due_Date__c}" label="Project Start Date"/>
+                        <apex:inputField value="{!newOpp.PSO_Solution_Detail__c}" label="Consulting Solution Detail"/>
+                        <apex:inputField value="{!newOpp.Consulting_Revenue_Status__c}" label="Consulting revenue Status"/>
+                        <apex:inputField value="{!newOpp.PSO_Effort_days__c}" label="Consulting Delivery Model"/>
+                        <apex:inputField value="{!newOpp.Consulting_Pipeline__c}" label="Consulting Key Deal"/>
+                        <apex:inputField value="{!newOpp.PSO_Months__c}" label="Consulting Months"/>
+                        <apex:inputField value="{!newOpp.SOW_Reference__c}" label="SOW Reference"/>
+                        <apex:inputField value="{!newOpp.Project_Description__c}" label="Project Description"/>       
+                    </apex:pageblockSection>
+                    
+                    <apex:pageblockSection Title="PSA Data" columns="1" id="thePSAData" dir="LTR">   
+                        <apex:inputField value="{!newOpp.pse__Is_Services_Opportunity__c}" label="Is Services Opportunity"/>
+                        <apex:inputField value="{!newOpp.pse__Region__c}" label="Region"/>
+                    </apex:pageblockSection>
+                    
+                    <apex:pageblockSection Title="Ventyx/ABB Supply Entities" columns="1" id="theSuplEnt" dir="LTR">    
+                        <apex:inputField value="{!newOpp.Supply_Entity_1__c}" label="Supply Entity 1"/>
+                        <apex:inputField value="{!newOpp.Supply_Entity_2__c}" label="Supply Entity 2"/>
+                        <apex:inputField value="{!newOpp.PSO_Service_Center__c}" label="Consulting Service Center"/>      
+                    </apex:pageblockSection>
+                    
+                    <apex:pageblockSection Title="LEGAL (For Legal Use ONLY)" id="theLegal" columns="2" dir="LTR">   
+                        <apex:inputField value="{!newOpp.Contract_Status__c}" label="Contract Status"/>
+                        <apex:inputField value="{!newOpp.Legal_Status_Date__c}" label="Legal Status Date"/>
+                        <apex:inputField value="{!newOpp.Legal_Status_Legal_Next_Steps__c}" label="Legal Status/Next Steps"/>
+                        <apex:inputField value="{!newOpp.Legal_Assignment__c}" label="Legal Assignment"/>   
+                    </apex:pageblockSection>
+                   
+                    <apex:pageblockSection Title="Win Loss Information" id="theLossInfo" columns="2" dir="LTR"> 
+                        <apex:inputField value="{!newOpp.Winner__c}" label="Winner"/>
+                        <apex:inputField value="{!newOpp.If__c}" label="If 'Other', Winner..."/>
+                        <apex:inputField value="{!newOpp.Win_Loss_Not_Pursued_Reason_Category__c}" label="Win/Loss/Not Pursued Reason Category"/>
+                        <apex:inputField value="{!newOpp.Win_Loss_Not_Pursued_Reason_Detail__c}" label="Win/Loss/Not Pursued reason Detail"/>    
+                    </apex:pageblockSection>
+                   
+                    <apex:pageblockSection Title="Lead Information" id="theLeadInfo" columns="2" dir="LTR">
+                        <apex:outputField value="{!newOpp.CampaignId}" label="Primary Campaign Source"/>
+                        <apex:inputField value="{!newOpp.LeadSource}" label="Lead Source"/>
+                        <apex:inputField value="{!newOpp.MDR_Owners__c}" label="MDR Owner"/>
+                        <apex:inputField value="{!newOpp.Lead_Sub_Source__c}" label="Lead Sub Source"/> 
+                        <apex:inputField value="{!newOpp.If_Other_List_Driver__c}" label="If Other, List Driver"/>
+                        <apex:inputField value="{!newOpp.Referred_By__c}" label="Referred By"/>
+                        <apex:inputField value="{!newOpp.Lead_Notes__c}" label="Lead Notes"/>
+                        <apex:inputField value="{!newOpp.IntegrationID__c}" label="Integration ID"/>       
+                    </apex:pageblockSection>
+                </apex:pageBlock>
+    </apex:form>
+    <script>
+        sforce.connection.sessionId = "{!$Api.Session_ID}";
+
+        function doValidation(){
+            var checkPro = {!newOpp.Probability};
+            if(!(checkPro.size <>0)||!(checkPro.size <>0.10)||!(checkPro.size <>0.25)||!(checkPro.size <>0.40)||!(checkPro.size <>0.60)||!(checkPro.size <>0.90)||!(checkPro.size <>0.95)||!(checkPro.size <>0.99)||!(checkPro.size <>100)){
+                save;
+            }
+            else{
+                alert('Please Probabilities must be equal to 10, 25, 40, 60, 90, 95, 99 or 100!');
+            }
+        };
+
+        function processChange(){
+
+            var obj = document.getElementById('{!$Component.frm.stageFieldId}');
+            var p = document.getElementById('{!$Component.frm.probabilityFieldId}');
+
+            var qr = sforce.connection.query("Select DefaultProbability From OpportunityStage where MasterLabel = '" + $(obj).val() + "'");
+            records = qr.getArray("records");
+
+            for (var i=0; i< records.length; i++) {
+                var record = records[i];
+                $(p).val(record.DefaultProbability);
+                break;
+            }
+            return true;
+        }
+    </script>
+</apex:page>
