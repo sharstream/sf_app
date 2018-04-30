@@ -1,0 +1,7 @@
+.config/
+.deploy/
+.DS_Store
+node_modules/
+.env
+package-lock.json
+test.zip
