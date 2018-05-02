@@ -22,12 +22,12 @@
   <target name="DeployAndCheckOnly">
     <echo>Deploy Code CheckOnly with username: ${master.username}</echo>
 	<echo>Deploy Code CheckOnly in Org: ${master.serverurl}</echo>
-    <sf:deploy username="${master.username}" password="${master.password}" serverurl="${master.serverurl}" maxPoll="${master.maxPoll}" deployRoot="${user.dir}/packages/V1connector_timeout" logType="Detail" checkOnly="${master.checkOnly}" testLevel="${master.runLocalTests}"/>
+    <sf:deploy username="${master.username}" password="${master.password}" serverurl="${master.serverurl}" maxPoll="${master.maxPoll}" deployRoot="${user.dir}/src" logType="Detail" checkOnly="${master.checkOnly}" testLevel="${master.runLocalTests}"/>
   </target>
   <target name="DeployAndRunAllTests">
     <echo>Deploy and RunAllTests in Org with username: ${sf.prelim.username}</echo>
 	<echo>Deploy Code CheckOnly in Org: ${sf.test.serverurl}</echo>
-    <sf:deploy username="${sf.prelim.username}" password="${sf.prelim.password}" serverurl="${sf.test.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${user.dir}/packages/V1connector_timeout" logType="Detail" testLevel="${sf.runspecificTests}">
+    <sf:deploy username="${sf.hub_sandbox.username}" password="${sf.hub_sandbox.password}" serverurl="${sf.test.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${user.dir}/src" logType="Detail" testLevel="${sf.runspecificTests}">
 		<runTest>V1Connector_Tests</runTest>
 	</sf:deploy>
   </target>
