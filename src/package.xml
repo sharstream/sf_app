@@ -2,8 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>AsyncPartnerSoapSforceCom</members>
+        <members>AsyncSoapSforceCom200608Apex</members>
         <members>faultPartnerSoapSforceCom</members>
         <members>partnerSoapSforceCom</members>
+        <members>soapSforceCom200608Apex</members>
         <members>sobjectPartnerSoapSforceCom</members>
         <name>ApexClass</name>
     </types>
