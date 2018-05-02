@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Support_Order__c.Contract__c</members>
-        <members>Supported_Product__c.Support_Order__c</members>
-        <name>CustomField</name>
+        <members>AsyncPartnerSoapSforceCom</members>
+        <members>AsyncSoapSforceCom200608Apex</members>
+        <members>faultPartnerSoapSforceCom</members>
+        <members>partnerSoapSforceCom</members>
+        <members>soapSforceCom200608Apex</members>
+        <members>sobjectPartnerSoapSforceCom</members>
+        <name>ApexClass</name>
     </types>
-    <types>
-        <members>Account</members>
-        <members>Support_Order__c</members>
-        <members>Supported_Product__c</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>Support_Order__c.Update_Bill_to_Party_on_SO</members>
-        <members>Support_Order__c.Update_Sold_to_Ship_to_Bill_to</members>
-        <members>Support_Order__c.Update_the_Ship_To</members>
-        <name>WorkflowFieldUpdate</name>
-    </types>
-    <types>
-        <members>Support_Order__c.Update Sold to Ship to Bill to</members>
-        <name>WorkflowRule</name>
-    </types>
-    <version>35.0</version>
+    <version>42.0</version>
 </Package>
