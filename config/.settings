@@ -1,0 +1,17 @@
+{
+    "projectName": "sfdc_app",
+    "username": "davedevelopmentusa@gmail.com",
+    "id": "c15b5aa0-a3c3-11e8-80b9-09019dcf6830",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://lighitningatlanta-dev-ed.my.salesforce.com",
+    "workspace": "/Users/davidperez/Documents/applications",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

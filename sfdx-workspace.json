@@ -1,9 +1,9 @@
 {
   "PackageDirectories": [
     {
-      "Path": "sf_app"
+      "Path": "sfdc_app"
     }
   ],
   "Namespace": "",
-  "SourceApiVersion": "39.0"
+  "SourceApiVersion": "42.0"
 }

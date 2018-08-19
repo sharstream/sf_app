@@ -9,5 +9,5 @@
         <members>sobjectPartnerSoapSforceCom</members>
         <name>ApexClass</name>
     </types>
-    <version>35.0</version>
+    <version>42.0</version>
 </Package>
