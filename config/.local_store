@@ -14,5 +14,21 @@
         "manageableState": "unmanaged",
         "type": "ApexPage",
         "mmState": "clean"
+    },
+    "Trailhead_SLDS_Listview.page": {
+        "id": "066f4000004luAeAAI",
+        "name": "Trailhead_SLDS_Listview",
+        "createdDate": "2018-08-19T16:47:25.000+0000",
+        "createdById": "005f4000000e2EcAAI",
+        "namespacePrefix": null,
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedDate": "2018-08-19T17:24:56.000+0000",
+        "fullName": "Trailhead_SLDS_Listview",
+        "fileName": "unpackaged/pages/Trailhead_SLDS_Listview.page",
+        "createdByName": "David Perez",
+        "lastModifiedByName": "David Perez",
+        "manageableState": "unmanaged",
+        "type": "ApexPage",
+        "mmState": "clean"
     }
 }

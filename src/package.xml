@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>Trailhead_SLDS_Basic</members>
+		<members>Trailhead_SLDS_Listview</members>
 		<name>ApexPage</name>
 	</types>
 	<version>42.0</version>
