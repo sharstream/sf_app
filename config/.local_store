@@ -1,1 +1,18 @@
-{}
+{
+    "Trailhead_SLDS_Basic.page": {
+        "id": "066f4000004luAZAAY",
+        "name": "Trailhead_SLDS_Basic",
+        "createdDate": "2018-08-19T15:50:54.000+0000",
+        "createdById": "005f4000000e2EcAAI",
+        "namespacePrefix": null,
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedDate": "2018-08-19T16:45:25.000+0000",
+        "fullName": "Trailhead_SLDS_Basic",
+        "fileName": "unpackaged/pages/Trailhead_SLDS_Basic.page",
+        "createdByName": "David Perez",
+        "lastModifiedByName": "David Perez",
+        "manageableState": "unmanaged",
+        "type": "ApexPage",
+        "mmState": "clean"
+    }
+}
