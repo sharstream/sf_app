@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Import the Design System style sheet -->
   <apex:slds />
+  <apex:includeScript value="{!$Resource.svg4everybody}" />
+  <script>
+    svg4everybody();
+  </script>
 </head>
 <apex:remoteObjects>
   <apex:remoteObjectModel name="Account" fields="Id,Name,LastModifiedDate"/>
@@ -25,8 +29,20 @@
       <div class="slds-grid">
         <div class="slds-col slds-has-flexi-truncate">
           <!-- HEADING AREA -->
-          <p class="slds-text-title_caps slds-line-height_reset">Accounts</p>
-          <h1 class="slds-page-header__title slds-truncate" title="My Accounts">My Accounts</h1>
+          <div class="slds-media slds-no-space slds-grow">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container slds-icon-action-new_person_account" title="description of icon when needed">
+                <svg aria-hidden="true" class="slds-icon slds-icon-text-light">
+                  <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#new_person_account')}"></use>
+                </svg>
+                <span class="slds-assistive-text">Account Icon</span>
+              </span>
+            </div>
+            <div class="slds-media__body">
+              <p class="slds-text-title_caps slds-line-height_reset">Accounts</p>
+              <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" title="My Accounts">My Accounts</h1>
+            </div>
+          </div>
           <!-- / HEADING AREA -->
         </div>
         <div class="slds-col slds-no-flex slds-grid slds-align-top">
@@ -97,23 +113,37 @@
               // add header row
               var tableHeader = dataTable.createTHead();
               var tableHeaderRow = tableHeader.insertRow();
-              var tableHeaderRowCell1 = tableHeaderRow.insertCell(0);
+              var tableHeaderRowCellIcon = tableHeaderRow.insertCell(0);
+              tableHeaderRowCellIcon.setAttribute('class', 'slds-cell-shrink');
+              var tableHeaderRowCell1 = tableHeaderRow.insertCell(1);
               tableHeaderRowCell1.appendChild(document.createTextNode('Account name'));
               tableHeaderRowCell1.setAttribute('scope', 'col');
               tableHeaderRowCell1.setAttribute('class', 'slds-text-heading_label');
-              var tableHeaderRowCell2 = tableHeaderRow.insertCell(1);
+              var tableHeaderRowCell2 = tableHeaderRow.insertCell(2);
               tableHeaderRowCell2.appendChild(document.createTextNode('Account ID'));
               tableHeaderRowCell2.setAttribute('scope', 'col');
               tableHeaderRowCell2.setAttribute('class', 'slds-text-heading_label');
+
               // build table body
               var tableBody = dataTable.appendChild(document.createElement('tbody'))
               var dataRow, dataRowCell1, dataRowCell2, recordName, recordId;
               records.forEach(function(record) {
                 dataRow = tableBody.insertRow();
-                dataRowCell1 = dataRow.insertCell(0);
+                var sldsSpriteReference = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+                sldsSpriteReference.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#new_person_account')}');
+                var accountIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                accountIcon.setAttributeNS('http://www.w3.org/2000/svg', 'aria-hidden', true);
+                accountIcon.classList.add('slds-icon', 'slds-icon-text-light');
+                accountIcon.appendChild(sldsSpriteReference);
+                accountIconWrapper = document.createElement('span');
+                accountIconWrapper.classList.add('slds-icon_container', 'slds-icon-action-new_person_account');
+                accountIconWrapper.appendChild(accountIcon);
+                dataRowCellIcon = dataRow.insertCell(0);
+                dataRowCellIcon.appendChild(accountIconWrapper);
+                dataRowCell1 = dataRow.insertCell(1);
                 recordName = document.createTextNode(record.get('Name'));
                 dataRowCell1.appendChild(recordName);
-                dataRowCell2 = dataRow.insertCell(1);
+                dataRowCell2 = dataRow.insertCell(2);
                 recordId = document.createTextNode(record.get('Id'));
                 dataRowCell2.appendChild(recordId);
               });
