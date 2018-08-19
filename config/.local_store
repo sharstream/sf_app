@@ -30,5 +30,21 @@
         "manageableState": "unmanaged",
         "type": "ApexPage",
         "mmState": "clean"
+    },
+    "Trailhead_SLDS_RecordHome.page": {
+        "id": "066f4000004luAyAAI",
+        "name": "Trailhead_SLDS_RecordHome",
+        "createdDate": "2018-08-19T20:58:45.000+0000",
+        "createdById": "005f4000000e2EcAAI",
+        "namespacePrefix": null,
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedDate": "2018-08-19T21:06:01.000+0000",
+        "fullName": "Trailhead_SLDS_RecordHome",
+        "fileName": "unpackaged/pages/Trailhead_SLDS_RecordHome.page",
+        "createdByName": "David Perez",
+        "lastModifiedByName": "David Perez",
+        "manageableState": "unmanaged",
+        "type": "ApexPage",
+        "mmState": "clean"
     }
 }

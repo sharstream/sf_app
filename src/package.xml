@@ -3,6 +3,7 @@
 	<types>
 		<members>Trailhead_SLDS_Basic</members>
 		<members>Trailhead_SLDS_Listview</members>
+		<members>Trailhead_SLDS_RecordHome</members>
 		<name>ApexPage</name>
 	</types>
 	<version>42.0</version>
