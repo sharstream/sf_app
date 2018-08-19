@@ -42,6 +42,26 @@
     <!-- / PAGE HEADER -->
     <!-- PRIMARY CONTENT WRAPPER -->
     <div class="myapp">
+      <!-- CREATE NEW ACCOUNT -->
+      <div aria-labelledby="newaccountform">
+        <!-- CREATE NEW ACCOUNT FORM -->
+        <form class="slds-form_stacked" id="add-account-form">
+          <!-- BOXED AREA -->
+          <fieldset class="slds-box slds-theme_default slds-container_small">
+            <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">Add a new account</legend>
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="account-name">Name</label>
+              <div class="slds-form-element__control">
+                <input id="account-name" class="slds-input" type="text" placeholder="New account"/>
+              </div>
+            </div>
+            <button class="slds-button slds-button_brand slds-m-top_medium" type="submit">Create Account</button>
+          </fieldset>
+          <!-- / BOXED AREA -->
+        </form>
+        <!-- CREATE NEW ACCOUNT FORM -->
+      </div>
+      <!-- / CREATE NEW ACCOUNT -->
       <!-- ACCOUNT LIST TABLE -->
       <div id="account-list" class="slds-p-vertical_medium"></div>
       <!-- / ACCOUNT LIST TABLE -->
@@ -109,6 +129,23 @@
         );
       }
       updateOutputDiv();
+      var accountForm = document.getElementById('add-account-form');
+      var accountNameField = document.getElementById('account-name');
+      var createAccount = function() {
+        var account = new SObjectModel.Account();
+        account.create({ Name: accountNameField.value }, function(error, records) {
+          if (error) {
+            alert(error.message);
+          } else {
+            updateOutputDiv();
+            accountNameField.value = '';
+          }
+        });
+      }
+      accountForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        createAccount();
+      });
     })();
   </script>
   <!-- / JAVASCRIPT -->
