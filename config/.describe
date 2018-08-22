@@ -577,6 +577,27 @@
             "xmlName": "CallCenter"
         },
         {
+            "directoryName": "milestoneTypes",
+            "inFolder": false,
+            "metaFile": false,
+            "suffix": "milestoneType",
+            "xmlName": "MilestoneType"
+        },
+        {
+            "directoryName": "entitlementProcesses",
+            "inFolder": false,
+            "metaFile": false,
+            "suffix": "entitlementProcess",
+            "xmlName": "EntitlementProcess"
+        },
+        {
+            "directoryName": "entitlementTemplates",
+            "inFolder": false,
+            "metaFile": false,
+            "suffix": "entitlementTemplate",
+            "xmlName": "EntitlementTemplate"
+        },
+        {
             "directoryName": "connectedApps",
             "inFolder": false,
             "metaFile": false,
