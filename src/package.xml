@@ -6,5 +6,23 @@
 		<members>Trailhead_SLDS_RecordHome</members>
 		<name>ApexPage</name>
 	</types>
+	<types>
+		<members>Expense</members>
+		<members>Camping_Item</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Expense_Toggle_Switch</members>
+		<members>helloWorld</members>
+		<members>harnessApp</members>
+		<members>helloHeading</members>
+		<members>campingList</members>
+		<members>campingHeader</members>
+		<members>camping</members>
+		<members>helloPlayground</members>
+		<members>helloMessage</members>
+		<members>campingListItem</members>
+		<name>AuraDefinitionBundle</name>
+	</types>
 	<version>42.0</version>
 </Package>
