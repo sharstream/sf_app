@@ -23,5 +23,8 @@
     Quantity:
     <lightning:formattedNumber value="{!v.item.Quantity__c}"/>
   </p>
+  <lightning:button label="Packed!"
+    onclick="{!c.packItem}"
+  />
   <!-- <ui:outputCurrency value="{!v.item.Quantity__c}" /> -->
 </aura:component>
