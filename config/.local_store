@@ -1152,5 +1152,47 @@
         "manageableState": "unmanaged",
         "type": "AuraDefinitionBundle",
         "mmState": "clean"
+    },
+    "DeleteWithCheckboxComponent/DeleteWithCheckboxComponent.cmp.undefined": {
+        "createdById": "005f4000000e2EcAAI",
+        "createdByName": "David Perez",
+        "createdDate": "2018-08-25T21:07:44.000Z",
+        "fileName": "unpackaged/aura/DeleteWithCheckboxComponent/DeleteWithCheckboxComponent.cmp",
+        "fullName": "DeleteWithCheckboxComponent/DeleteWithCheckboxComponent.cmp",
+        "id": "0Adf4000002ArVICA0",
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedByName": "David Perez",
+        "lastModifiedDate": "2018-08-25T21:07:44.000Z",
+        "manageableState": "unmanaged",
+        "type": "AuraDefinitionBundle",
+        "mmState": "clean"
+    },
+    "DeleteWithCheckboxComponent/DeleteWithCheckboxComponentController.js.undefined": {
+        "createdById": "005f4000000e2EcAAI",
+        "createdByName": "David Perez",
+        "createdDate": "2018-08-25T21:07:44.000Z",
+        "fileName": "unpackaged/aura/DeleteWithCheckboxComponent/DeleteWithCheckboxComponentController.js",
+        "fullName": "DeleteWithCheckboxComponent/DeleteWithCheckboxComponentController.js",
+        "id": "0Adf4000002ArVSCA0",
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedByName": "David Perez",
+        "lastModifiedDate": "2018-08-25T21:07:44.000Z",
+        "manageableState": "unmanaged",
+        "type": "AuraDefinitionBundle",
+        "mmState": "clean"
+    },
+    "DeleteWithCheckboxComponent/DeleteWithCheckboxComponentHelper.js.undefined": {
+        "createdById": "005f4000000e2EcAAI",
+        "createdByName": "David Perez",
+        "createdDate": "2018-08-25T21:07:44.000Z",
+        "fileName": "unpackaged/aura/DeleteWithCheckboxComponent/DeleteWithCheckboxComponentHelper.js",
+        "fullName": "DeleteWithCheckboxComponent/DeleteWithCheckboxComponentHelper.js",
+        "id": "0Adf4000002ArVNCA0",
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedByName": "David Perez",
+        "lastModifiedDate": "2018-08-25T21:07:44.000Z",
+        "manageableState": "unmanaged",
+        "type": "AuraDefinitionBundle",
+        "mmState": "clean"
     }
 }

@@ -1345,6 +1345,57 @@
     {
         "attributes": {
             "type": "AuraDefinition",
+            "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000002ArVSCA0"
+        },
+        "Id": "0Adf4000002ArVSCA0",
+        "AuraDefinitionBundleId": "0Abf400000030HLCAY",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v42.0/tooling/sobjects/AuraDefinitionBundle/0Abf400000030HLCAY"
+            },
+            "DeveloperName": "DeleteWithCheckboxComponent"
+        },
+        "DefType": "CONTROLLER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000002ArVNCA0"
+        },
+        "Id": "0Adf4000002ArVNCA0",
+        "AuraDefinitionBundleId": "0Abf400000030HLCAY",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v42.0/tooling/sobjects/AuraDefinitionBundle/0Abf400000030HLCAY"
+            },
+            "DeveloperName": "DeleteWithCheckboxComponent"
+        },
+        "DefType": "HELPER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000002ArVICA0"
+        },
+        "Id": "0Adf4000002ArVICA0",
+        "AuraDefinitionBundleId": "0Abf400000030HLCAY",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v42.0/tooling/sobjects/AuraDefinitionBundle/0Abf400000030HLCAY"
+            },
+            "DeveloperName": "DeleteWithCheckboxComponent"
+        },
+        "DefType": "COMPONENT",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
             "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000000VJsBCAW"
         },
         "Id": "0Adf4000000VJsBCAW",

@@ -22,6 +22,7 @@
 		<members>helloPlayground</members>
 		<members>helloMessage</members>
 		<members>campingListItem</members>
+		<members>DeleteWithCheckboxComponent</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>42.0</version>
