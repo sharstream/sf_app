@@ -1,7 +1,11 @@
 <aura:application>
 
-  <c:helloWorld/>
+  <!-- <c:helloWorld/>
 
-  <c:helloPlayground/>
+  <c:helloPlayground/> -->
+
+    <c:campingListItem/>
+
+    <c:DeleteWithCheckboxComponent />
 
 </aura:application>
