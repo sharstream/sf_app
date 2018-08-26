@@ -1,4 +1,4 @@
-<aura:application>
+<aura:application extends="force:slds">
 
   <!-- <c:helloWorld/>
 
@@ -8,4 +8,4 @@
 
     <c:DeleteWithCheckboxComponent />
 
-</aura:application>
+  </aura:application>
