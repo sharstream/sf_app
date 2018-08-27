@@ -1432,5 +1432,19 @@
         "manageableState": "unmanaged",
         "type": "AuraDefinitionBundle",
         "mmState": "clean"
+    },
+    "campingApp/campingApp.app.undefined": {
+        "createdById": "005f4000000e2EcAAI",
+        "createdByName": "David Perez",
+        "createdDate": "2018-08-27T17:12:34.000Z",
+        "fileName": "unpackaged/aura/campingApp/campingApp.app",
+        "fullName": "campingApp/campingApp.app",
+        "id": "0Adf4000002AsJ7CAK",
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedByName": "David Perez",
+        "lastModifiedDate": "2018-08-27T17:12:34.000Z",
+        "manageableState": "unmanaged",
+        "type": "AuraDefinitionBundle",
+        "mmState": "clean"
     }
 }

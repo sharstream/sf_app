@@ -27,6 +27,7 @@
 		<members>expensesApp</members>
 		<members>expenseItem</members>
 		<members>expensesList</members>
+		<members>campingApp</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>42.0</version>

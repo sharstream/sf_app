@@ -1685,6 +1685,23 @@
     {
         "attributes": {
             "type": "AuraDefinition",
+            "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000002AsJ7CAK"
+        },
+        "Id": "0Adf4000002AsJ7CAK",
+        "AuraDefinitionBundleId": "0Abf400000030U5CAI",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v42.0/tooling/sobjects/AuraDefinitionBundle/0Abf400000030U5CAI"
+            },
+            "DeveloperName": "campingApp"
+        },
+        "DefType": "APPLICATION",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
             "url": "/services/data/v42.0/tooling/sobjects/AuraDefinition/0Adf4000000VJsBCAW"
         },
         "Id": "0Adf4000000VJsBCAW",
