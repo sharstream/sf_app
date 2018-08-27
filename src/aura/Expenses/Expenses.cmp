@@ -9,6 +9,7 @@
       'Date__c': '',
       'Reimbursed__c': false }"
   />
+  <aura:attribute name="expenses" type="Expense__c[]"/>
   <!-- PAGE HEADER -->
   <lightning:layout class="slds-page-header slds-page-header--object-home">
     <lightning:layoutItem>
@@ -99,5 +100,7 @@
     </lightning:layoutItem>
   </lightning:layout>
   <!-- / NEW EXPENSE FORM -->
+
+  <c:expensesList expenses="{!v.expenses}"/>
 
 </aura:component>

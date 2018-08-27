@@ -12,5 +12,6 @@
       console.log("Create expense: " + JSON.stringify(newExpense));
       helper.createExpense(component, newExpense);
     }
+    console.log("validExpense: " + validExpense);
   }
 })
