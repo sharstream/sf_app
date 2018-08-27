@@ -8,5 +8,11 @@
     console.log("handleClick: packed: " + packed);
     component.set("v.item.Packed__c", true);
     component.set("v.disabled", true);
+  },
+  doInit: function (component, event, helper) {
+    var mydate = component.get("v.item.Date__c");
+    if (mydate) {
+      component.set("v.formatdate", new Date(mydate));
+    }
   }
 })

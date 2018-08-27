@@ -19,11 +19,14 @@
       Quantity:
       <lightning:formattedNumber
         value="{!v.item.Quantity__c}"
-        style="currency"
       />
     </p>
-    <p class="slds-p-horizontal--small">
-      Price: {!v.item.Price__c}
+    <p class="slds-text-heading--medium slds-p-horizontal--small">
+      Price:
+      <lightning:formattedNumber
+        value="{!v.item.Price__c}"
+        style="currency"
+      />
     </p>
     <p>
       Packed:

@@ -3,6 +3,7 @@
     name="newItem"
     type="Camping_Item__c"
     default="{ 'sobjectType': 'Camping_Item__c',
+      'Name': '',
       'Quantity__c': 0,
       'Price__c': 0,
       'Packed__c': false }"
@@ -38,12 +39,12 @@
             aura:id="campingform"
             label="Quantity"
             name="quantityname"
-            min="0.1"
-            formatter="currency"
-            step="0.01"
-            value="{!v.newItem.Amount__c}"
-            placeholder="$0.00"
-            messageWhenRangeUnderflow="Enter at least a quantity"
+            format=".0%"
+            min="1"
+            step="1"
+            value="{!v.newItem.Quantity__c}"
+            placeholder="1"
+            messageWhenRangeUnderflow="The Quantity field accepts a number that's at least 1"
           />
           <lightning:input
             type="number"
@@ -53,7 +54,7 @@
             min="0.1"
             formatter="currency"
             step="0.01"
-            value="{!v.newItem.Amount__c}"
+            value="{!v.newItem.Price__c}"
             placeholder="$0.00"
             messageWhenRangeUnderflow="Enter an price that's at least $0.10."
           />
@@ -68,7 +69,7 @@
             label="Create Camping"
             class="slds-m-top--medium"
             variant="brand"
-            onclick="{!c.clickCreate}"
+            onclick="{!c.clickCreateItem}"
           />
         </form>
       </fieldset>
@@ -80,4 +81,5 @@
     </lightning:layoutItem>
   </lightning:layout>
   <!-- / NEW CAMPING FORM -->
+  <c:campingList items="{!v.items}"/>
 </aura:component>
