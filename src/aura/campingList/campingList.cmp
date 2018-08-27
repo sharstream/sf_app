@@ -1,4 +1,7 @@
 <aura:component>
+
+  <aura:attribute name="items" type="Camping_Item__c[]"/>
+
   <ol>
     <li>Bug Spray</li>
     <li>Bear Repellant</li>
