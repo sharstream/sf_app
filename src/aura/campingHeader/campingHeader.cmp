@@ -2,7 +2,7 @@
   <!-- PAGE HEADER -->
   <lightning:layout class="slds-page-header slds-page-header--object-home">
     <lightning:layoutItem>
-      <lightning:icon iconName="standard:scan_card" alternativeText="My Campings" />
+      <lightning:icon iconName="action:goal" alternativeText="My Campings" />
     </lightning:layoutItem>
     <lightning:layoutItem padding="horizontal-small">
       <div class="page-section page-header">
