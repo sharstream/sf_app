@@ -11,7 +11,17 @@
   />
   <aura:attribute name="items" type="Camping_Item__c[]"/>
 
-  <lightning:card title="Campings">
+  <lightning:card
+    class="slds-text-heading_small"
+    title="Campings"
+    iconName="utility:broadcast"
+  >
+    <aura:set attribute="actions">
+        <lightning:buttonMenu iconSize="x-small" menuAlignment="right">
+            <lightning:menuItem label="Open Watchlist app" value="Open" />
+            <lightning:menuItem label="Add to Watchlist app" value="Add" />
+        </lightning:buttonMenu>
+    </aura:set>
     <p class="slds-p-horizontal--small">
       <aura:iteration items="{!v.items}" var="item">
         <c:campingListItem item="{!item}"/>
