@@ -30,5 +30,9 @@
 		<members>campingApp</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
+	<types>
+		<members>LeadAutoConvert</members>
+		<name>ApexClass</name>
+	</types>
 	<version>42.0</version>
 </Package>

@@ -7,7 +7,8 @@
   <lightning:card
     title="{!v.item.Name}"
     iconName="standard:scan_card"
-    class="{!v.item.Packed__c ? 'slds-theme--success' : ''}"
+    class="{!v.item.Packed__c ? 'slds-theme--success' : 'slds-theme_info'}"
+    style="{color: #0d0e12}"
   >
     <aura:set attribute="footer">
       <p>Date: <lightning:formattedDateTime value="{!v.formatdate}"/></p>

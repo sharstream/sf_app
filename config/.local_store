@@ -1446,5 +1446,21 @@
         "manageableState": "unmanaged",
         "type": "AuraDefinitionBundle",
         "mmState": "clean"
+    },
+    "LeadAutoConvert.cls": {
+        "id": "01pf400000HLz3qAAD",
+        "name": "LeadAutoConvert",
+        "createdDate": "2018-09-14T23:09:57.000+0000",
+        "createdById": "005f4000000e2EcAAI",
+        "namespacePrefix": null,
+        "lastModifiedById": "005f4000000e2EcAAI",
+        "lastModifiedDate": "2018-09-14T23:09:57.000+0000",
+        "fullName": "LeadAutoConvert",
+        "fileName": "unpackaged/classes/LeadAutoConvert.cls",
+        "createdByName": "David Perez",
+        "lastModifiedByName": "David Perez",
+        "manageableState": "unmanaged",
+        "type": "ApexClass",
+        "mmState": "clean"
     }
 }
