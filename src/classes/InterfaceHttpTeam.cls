@@ -24,7 +24,7 @@ public class InterfaceHttpTeam {
     return res;
   }
 
-  public static HttpResponse makeGetTeams(HttpRequest req) {
+  public static HttpResponse makeGetTeams() {
     Http http = new Http();
     HttpRequest request = new HttpRequest();
     request.setEndpoint('https://yougoal.herokuapp.com/api/teamsGet/teams');
