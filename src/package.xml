@@ -32,6 +32,8 @@
 	</types>
 	<types>
 		<members>LeadAutoConvert</members>
+		<members>InterfaceHttpTeam</members>
+		<members>InterfaceHttpTeamTest</members>
 		<name>ApexClass</name>
 	</types>
 	<version>42.0</version>
