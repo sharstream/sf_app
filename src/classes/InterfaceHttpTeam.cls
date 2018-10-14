@@ -30,24 +30,29 @@ public with sharing class InterfaceHttpTeam {
     Http http = new Http();
     HttpRequest request = new HttpRequest();
     endPoint = endPoint + webCall;
+    System.debug('Endpoint: ' + endPoint);
     request.setEndpoint(endPoint);
     request.setMethod(method);
     HttpResponse response = http.send(request);
+    System.debug(response.getBody());
+
     //If the request is successful, parse the JSON response
     if (response.getStatusCode() == 200) {
       // Desirializes the JSON string into collections of primitives data types
-      Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
+      // Map<String, Object>[] results = (Map<String, Object>[])JSON.deserializeUntyped(response.getBody());
+      List<Object> results = (List<Object>)JSON.deserializeUntyped(response.getBody());
       //Cast the values in the 'teams' key as a list
-      List<Object> teams = (List<Object>)results.get('Items');
+
+      // List<Object> teams = (List<Object>)results.get('Items');
       System.debug('Received the following teams:');
 
       List<Team__c> teamsInserted = new List<Team__c>();
 
-      for(Object team : teams) {
-        Map<String, Object> data = (Map<String, Object>)team;
+      for(Object result : results) {
+        Map<String, Object> team = (Map<String, Object>) result;
         Team__c currentTeam = new Team__c();
-        currentTeam.Name = (String)data.get('name');
-        currentTeam.Id = (String)data.get('_id');
+        currentTeam.Name = (String)team.get('name');
+        // currentTeam.Id = (String)team.get('_id');
         teamsInserted.add(currentTeam);
       }
 

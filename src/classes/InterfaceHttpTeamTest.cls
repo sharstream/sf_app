@@ -5,7 +5,7 @@ private class InterfaceHttpTeamTest {
     // Create the mock response based on a static resource
 
     StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
-    mock.setStaticResource('getTeamResource');
+    mock.setStaticResource('GetTeamResource');
     mock.setStatusCode(200);
     mock.setHeader('Content-Type', 'application/json;charset=UTF-8');
     // Associate the callout with a mock response
@@ -19,8 +19,12 @@ private class InterfaceHttpTeamTest {
     // Verify content type
     System.assertEquals('application/json;charset=UTF-8', result.getHeader('Content-Type'), 'The content type value is not expected');
     // Verify the array contains 32 items
-    Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(result.getBody());
-    List<Object> teams = (List<Object>)results.get('Items');
-    System.assertEquals(32, teams.size(), 'The array should only contain 32 items.');
+    // Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(result.getBody());
+    List<Object> results = (List<Object>)JSON.deserializeUntyped(result.getBody());
+    // List<Object> teams = (List<Object>)results.get('Items');
+    System.assertEquals(32, results.size(), 'The array should only contain 3 items.');
   }
+
+
+
 }
