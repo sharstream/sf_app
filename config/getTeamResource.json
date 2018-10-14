@@ -1,6 +1,5 @@
-{
-  "teams":
-  [{
+[
+  {
     "_id": "1066",
     "name": "Iceland",
     "shortName": "Iceland",
@@ -511,5 +510,5 @@
     "lastUpdated": "2018-06-07T12:17:48Z",
     "Flags": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg",
     "teamImg": "https://i1.wp.com/football2018worldcup.com/wp-content/uploads/2018/04/gg.jpg"
-  }]
-}
+  }
+]
