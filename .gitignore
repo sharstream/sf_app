@@ -7,3 +7,5 @@ package-lock.json
 test.zip
 config/.local_store
 *.cls-meta.xml
+.vscode/launch.json
+.vscode/settings.json

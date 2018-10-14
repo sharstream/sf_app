@@ -1,4 +1,4 @@
-public class InterfaceHttpTeam {
+public with sharing class InterfaceHttpTeam {
 
   protected Integer code;
   protected String status;
@@ -24,23 +24,42 @@ public class InterfaceHttpTeam {
     return res;
   }
 
-  public static HttpResponse makeGetTeams() {
+  public static HttpResponse performAction(String method, String webCall) {
+
+    String endPoint = 'https://yougoal.herokuapp.com/api/teamsGet/';
     Http http = new Http();
     HttpRequest request = new HttpRequest();
-    request.setEndpoint('https://yougoal.herokuapp.com/api/teamsGet/teams');
-    request.setMethod('GET');
+    endPoint = endPoint + webCall;
+    request.setEndpoint(endPoint);
+    request.setMethod(method);
     HttpResponse response = http.send(request);
     //If the request is successful, parse the JSON response
     if (response.getStatusCode() == 200) {
       // Desirializes the JSON string into collections of primitives data types
       Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
       //Cast the values in the 'teams' key as a list
-      List<Object> teams = (List<Object>)results.get('teams');
+      List<Object> teams = (List<Object>)results.get('Items');
       System.debug('Received the following teams:');
-      for (Object team : teams) {
-        System.debug(team);
+
+      List<Team__c> teamsInserted = new List<Team__c>();
+
+      for(Object team : teams) {
+        Map<String, Object> data = (Map<String, Object>)team;
+        Team__c currentTeam = new Team__c();
+        currentTeam.Name = (String)data.get('name');
+        currentTeam.Id = (String)data.get('_id');
+        teamsInserted.add(currentTeam);
+      }
+
+      if (!teamsInserted.isEmpty()) {
+        for (Team__c team : teamsInserted) {
+          System.debug(team);
+        }
+
+        insert teamsInserted;
       }
     }
+
     return response;
   }
 
