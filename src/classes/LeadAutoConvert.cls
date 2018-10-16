@@ -23,7 +23,7 @@ public with sharing class LeadAutoConvert {
 
   public void convertLeads(string lastName, string company){
     //todo any conversion
-    list<sObject> conversions = new list<sObject>();//return converted lead based on Acc, Cont or Opp
+    list<sObject> conventions = new list<sObject>();//return converted lead based on Acc, Cont or Opp
     for(Lead ld : leads){
       Lead myLead = new Lead(LastName = lastName, id = ld.id);
       insert myLead;
@@ -43,14 +43,14 @@ public with sharing class LeadAutoConvert {
             //assign cont lead to owner admin queue
             cont.ownerId = q[0].QueueId;
             //then convert/merge lead/obj
-            conversions.add(cont);
+            conventions.add(cont);
           }
           else if(typeof == 'Account') {
             Account acc = new Account();
             acc.Id = [SELECT AccountId FROM Contact WHERE Id = :myLead.Contact__c].Id;
             //assign acc lead to owner admin queue
             acc.ownerId = q[0].QueueId;
-            conversions.add(acc);
+            conventions.add(acc);
           }
         }
         else if(myLead.LeadSource == 'Sales Rep Outreach'){
@@ -58,7 +58,7 @@ public with sharing class LeadAutoConvert {
           opp.Id = lcr.convertedOpportunityId;
           //assign opp lead to owner admin queue
           opp.ownerId = q[0].QueueId;
-          conversions.add(opp);
+          conventions.add(opp);
         }
         System.debug('Lead Assign Success');
         System.assert(lcr.isSuccess());
@@ -79,6 +79,6 @@ public with sharing class LeadAutoConvert {
 
     //todo
     if (conversions.size() > 0)
-      insert conversions;
+      insert conventions;
   }
 }
