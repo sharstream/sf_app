@@ -1,3 +1,10 @@
+/*************************************************************************
+Name:           InterfaceHttpTeamCallout
+Author:         David Perez
+Created Date:   create on 10/16/2018
+Description:    This class acts as a http interface REST suite by YoUGoal project and Salesforce
+
+*************************************************************************/
 public with sharing class InterfaceHttpTeam {
 
   protected Integer code;
