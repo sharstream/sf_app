@@ -34,6 +34,8 @@
 		<members>LeadAutoConvert</members>
 		<members>InterfaceHttpTeam</members>
 		<members>InterfaceHttpTeamTest</members>
+		<members>EmailManager</members>
+		<members>StringArrayTest</members>
 		<name>ApexClass</name>
 	</types>
 	<version>42.0</version>
