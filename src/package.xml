@@ -37,6 +37,7 @@
 		<members>EmailManager</members>
 		<members>StringArrayTest</members>
 		<members>AccountHandler</members>
+		<members>ContactSearch</members>
 		<name>ApexClass</name>
 	</types>
 	<version>42.0</version>
