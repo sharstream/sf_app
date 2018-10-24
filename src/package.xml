@@ -38,6 +38,7 @@
 		<members>StringArrayTest</members>
 		<members>AccountHandler</members>
 		<members>ContactSearch</members>
+		<members>ContactAndLeadSearch</members>
 		<name>ApexClass</name>
 	</types>
 	<version>42.0</version>
