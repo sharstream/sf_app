@@ -41,5 +41,9 @@
 		<members>ContactAndLeadSearch</members>
 		<name>ApexClass</name>
 	</types>
+	<types>
+		<members>AddRelatedRecord</members>
+		<name>ApexTrigger</name>
+	</types>
 	<version>42.0</version>
 </Package>
